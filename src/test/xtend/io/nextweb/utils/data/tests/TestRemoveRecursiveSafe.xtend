@@ -33,17 +33,14 @@ class TestRemoveRecursive {
 		session.commit.get
 		
 		
-		waitFor [cb |
-			
-			root.collectDirectChildren(cb.embed [Tree<Link> tree |
-				
-				cb.onSuccess(Success.INSTANCE)
-			])
-			
-		]
 		
 		waitFor [cb |
-			root.removeRecursive( node1, cb)
+			root.removeSafeRecursive( node1, cb.embed [qries |
+				(qries.size > 0) => true
+			]
+			
+			
+			
 		]
 		session.commit.get
 		
