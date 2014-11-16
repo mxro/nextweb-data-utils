@@ -27,7 +27,7 @@ public class NextwebExt {
   /**
    * Determines all <b>direct</b> children of a node.
    */
-  public static Object collectDirectChildren(final Link root, final ValueCallback<Tree<Link>> cb) {
+  public static void collectDirectChildrenInt(final Link root, final ValueCallback<Tree<Link>> cb) {
     throw new Error("Unresolved compilation problems:"
       + "\nThe method uri is undefined for the type NextwebExt"
       + "\nType mismatch: cannot convert from Tree<Link> to Link"
