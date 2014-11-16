@@ -35,7 +35,9 @@ class NextwebExt {
 		
 		entity.collectDirectChildren(cb.embed [tree|
 			
-			
+			for (link: toList(tree)) {
+				
+			}
 			
 		])
 		
@@ -59,8 +61,10 @@ class NextwebExt {
 			
 			val cl = toList(node)
 			
+			l.addAll(cl)
 			
 		}
+		add(t.root)
 		l
 	}
 

@@ -8,9 +8,7 @@ import de.mxro.fn.Success;
 import io.nextweb.Entity;
 import io.nextweb.promise.NextwebPromise;
 import io.nextweb.utils.data.utils.Tree;
-import java.util.ArrayList;
 import java.util.List;
-import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 
 @SuppressWarnings("all")
 public class NextwebExt {
@@ -27,6 +25,9 @@ public class NextwebExt {
   public static void removeSaveRecursive(final Entity from, final Entity entity, final ValueCallback<NextwebPromise<Success>> cb) {
     final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
       public void apply(final Tree<Link> tree) {
+        List<Link> _list = NextwebExt.<Link>toList(tree);
+        for (final Link link : _list) {
+        }
       }
     };
     ValueCallback<Tree<Link>> _embed = Async.<Tree<Link>>embed(cb, _function);
@@ -45,15 +46,8 @@ public class NextwebExt {
   }
   
   private static <T extends Object> List<T> toList(final Tree<T> t) {
-    ArrayList<T> _xblockexpression = null;
-    {
-      final ArrayList<T> l = CollectionLiterals.<T>newArrayList();
-      for (final Tree<T> node : t) {
-        final List<T> cl = NextwebExt.<T>toList(node);
-      }
-      _xblockexpression = l;
-    }
-    return _xblockexpression;
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method add is undefined for the type NextwebExt");
   }
   
   /**
