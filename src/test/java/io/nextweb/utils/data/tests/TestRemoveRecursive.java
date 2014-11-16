@@ -22,7 +22,7 @@ import org.junit.internal.ArrayComparisonFailure;
 @SuppressWarnings("all")
 public class TestRemoveRecursive {
   @Test
-  public void tes() {
+  public void test() {
     final LocalServer server = AppjangleJre.startServer();
     final Session session = AppjangleJre.createSession(server);
     final Query root = session.seed(server);

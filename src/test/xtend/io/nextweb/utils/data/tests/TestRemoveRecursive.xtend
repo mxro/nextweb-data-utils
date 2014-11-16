@@ -8,7 +8,7 @@ import io.nextweb.utils.data.NextwebExt
 @JUnit
 class TestRemoveRecursive {
 	
-	def tes() {
+	def test() {
 		
 		val server = AppjangleJre.startServer
 		val session = AppjangleJre.createSession(server)
