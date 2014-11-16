@@ -26,7 +26,7 @@ class NextwebExt {
 		
 		entity.collectDirectChildren(cb.embed [tree |
 			
-			tree.traverse( [parent, node |
+			tree.forEach( [parent, node |
 				parent.remove(node)
 			])
 			
