@@ -13,6 +13,7 @@ import io.nextweb.promise.NextwebPromise
 import java.util.List
 
 import static extension de.mxro.async.Async.embed
+import de.mxro.tree.TreeExtension
 
 class NextwebExt {
 
@@ -25,7 +26,7 @@ class NextwebExt {
 		
 		entity.collectDirectChildren(cb.embed [tree |
 			
-			traverse(tree, [parent, node |
+			tree.traverse( [parent, node |
 				parent.remove(node)
 			])
 			
@@ -112,5 +113,7 @@ class NextwebExt {
 		]
 
 	}
+	
+	extension TreeExtension tree = new TreeExtension
 
 }

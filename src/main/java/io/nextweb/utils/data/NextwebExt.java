@@ -6,6 +6,7 @@ import de.mxro.fn.Closure;
 import de.mxro.fn.Closure2;
 import de.mxro.fn.Success;
 import de.mxro.tree.Tree;
+import de.mxro.tree.TreeExtension;
 import io.nextweb.Entity;
 import io.nextweb.Link;
 import io.nextweb.ListQuery;
@@ -17,6 +18,7 @@ import io.nextweb.promise.NextwebPromise;
 import io.nextweb.promise.exceptions.ExceptionListener;
 import io.nextweb.promise.exceptions.ExceptionResult;
 import java.util.List;
+import org.eclipse.xtext.xbase.lib.Extension;
 
 @SuppressWarnings("all")
 public class NextwebExt {
@@ -34,7 +36,7 @@ public class NextwebExt {
   
   public static void removeSaveRecursive(final Entity from, final Entity entity, final ValueCallback<List<NextwebPromise<Success>>> cb) {
     throw new Error("Unresolved compilation problems:"
-      + "\nThe method toList is undefined for the type NextwebExt");
+      + "\nCannot make an implicit static reference to the non-static extension toList");
   }
   
   /**
@@ -116,4 +118,7 @@ public class NextwebExt {
     };
     qry.get(_function_1);
   }
+  
+  @Extension
+  private TreeExtension tree = new TreeExtension();
 }
