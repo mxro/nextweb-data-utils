@@ -1,15 +1,12 @@
 package io.nextweb.utils.data
 
-import de.mxro.async.Async
 import de.mxro.async.callbacks.ValueCallback
 import de.mxro.fn.Closure2
 import de.mxro.fn.Success
 import io.nextweb.Entity
-import io.nextweb.Link
-import io.nextweb.Node
-import io.nextweb.Query
 import io.nextweb.promise.NextwebPromise
 import io.nextweb.utils.data.utils.Tree
+import java.util.List
 
 import static extension de.mxro.async.Async.embed
 
@@ -56,7 +53,9 @@ class NextwebExt {
 		
 	}
 	
-	
+	def private static <T> List<T> toList(Tree<T> t) {
+		
+	}
 
 	/**
 	 * Determines all <b>direct</b> children of a node.
