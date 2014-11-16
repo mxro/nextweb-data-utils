@@ -27,10 +27,16 @@ public class NextwebExt {
   public static void removeRecursive(final Entity from, final Entity entity, final ValueCallback<Success> cb) {
     final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
       public void apply(final Tree<Link> tree) {
+        for (final Tree<Link> node : tree) {
+        }
       }
     };
     ValueCallback<Tree<Link>> _embed = Async.<Tree<Link>>embed(cb, _function);
     NextwebExt.collectDirectChildren(entity, _embed);
+  }
+  
+  private static Object removeRecursiveInt(final Entity from, final Entity entity, final ValueCallback<Success> cb) {
+    return null;
   }
   
   /**

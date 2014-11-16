@@ -22,9 +22,17 @@ class NextwebExt {
 		
 		entity.collectDirectChildren(cb.embed [tree |
 			
-			
+			for (node : tree) {
+				
+				
+				
+			}
 			
 		])		
+	}
+
+	def private static removeRecursiveInt(Entity from, Entity entity, ValueCallback<Success> cb) {
+		
 	}
 
 	/**
