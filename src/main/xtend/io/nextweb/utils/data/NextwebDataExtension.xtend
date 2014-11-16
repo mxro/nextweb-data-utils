@@ -21,40 +21,34 @@ class NextwebDataExtension {
 	 * 
 	 * <p>Callback is called when all operations are defined, NOT executed.
 	 */
-	def  void removeRecursive(Entity from, Entity entity, ValueCallback<Success> cb) {
-		
-		entity.collectDirectChildren(cb.embed [tree |
-			
-			tree.forEachNode( [treeNode |
-				treeNode.parent.value.remove(treeNode.value)
-			])
-			
-			cb.onSuccess(Success.INSTANCE)
-			
-		])		
-	}
+	def void removeRecursive(Entity from, Entity entity, ValueCallback<Success> cb) {
 
+		entity.collectDirectChildren(
+			cb.embed [ tree |
+				tree.forEachNode(
+					[ treeNode |
+						if (treeNode.hasParent) {
+							treeNode.parent.value.remove(treeNode.value)
+						}
+					])
+				cb.onSuccess(Success.INSTANCE)
+			])
+	}
 
 	def void removeSaveRecursive(Entity from, Entity entity, ValueCallback<List<NextwebPromise<Success>>> cb) {
-		
-		entity.collectDirectChildren(cb.embed [tree|
-			
-			val res = newArrayList
 
-			
-			for (treeNode: tree.toList) {
-				
-				res.add(treeNode.parent.value.removeSafe(treeNode.value))
-				
-			}
-			
-			cb.onSuccess(res)
-			
-		])
-		
+		entity.collectDirectChildren(
+			cb.embed [ tree |
+				val res = newArrayList
+				for (treeNode : tree.toList) {
+
+					res.add(treeNode.parent.value.removeSafe(treeNode.value))
+
+				}
+				cb.onSuccess(res)
+			])
+
 	}
-
-	
 
 	/**
 	 * Determines all <b>direct</b> children of a node.
@@ -65,17 +59,17 @@ class NextwebDataExtension {
 			collectDirectChildren(link, cb)
 			return
 		}
-		
+
 		if (of instanceof Node) {
 			val link = of.session().link(of as Node)
 			collectDirectChildren(link, cb)
 			return
 		}
-		
+
 		if (of instanceof Query) {
 			val query = of
-			query.catchExceptions [er | cb.onFailure(er.exception)]
-			query.get [node|
+			query.catchExceptions[er|cb.onFailure(er.exception)]
+			query.get [ node |
 				collectDirectChildren(node.session().link(node), cb)
 			]
 		}
@@ -91,7 +85,6 @@ class NextwebDataExtension {
 		qry.catchExceptions[er|cb.onFailure(er.exception)]
 
 		qry.get [ children |
-
 			Async.forEach(children.nodes(),
 				[ e, ValueCallback<Tree<Link>> itmcb |
 					collectDirectChildren(session.link(e), itmcb)
@@ -102,18 +95,17 @@ class NextwebDataExtension {
 
 						if (childTree.value.uri().startsWith(root.uri())) {
 
-							t.add(childTree)	
-							
+							t.add(childTree)
+
 						}
 
 					}
-					
 					cb.onSuccess(t)
 				])
 		]
 
 	}
-	
+
 	extension TreeExtension tree = new TreeExtension
 
 }

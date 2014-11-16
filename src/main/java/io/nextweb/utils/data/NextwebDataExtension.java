@@ -34,10 +34,13 @@ public class NextwebDataExtension {
       public void apply(final Tree<Link> tree) {
         final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
           public void apply(final Tree<Link> treeNode) {
-            Tree<Link> _parent = treeNode.parent();
-            Link _value = _parent.value();
-            Link _value_1 = treeNode.value();
-            _value.remove(_value_1);
+            boolean _hasParent = treeNode.hasParent();
+            if (_hasParent) {
+              Tree<Link> _parent = treeNode.parent();
+              Link _value = _parent.value();
+              Link _value_1 = treeNode.value();
+              _value.remove(_value_1);
+            }
           }
         };
         NextwebDataExtension.this.tree.<Link, Object>forEachNode(tree, _function);
