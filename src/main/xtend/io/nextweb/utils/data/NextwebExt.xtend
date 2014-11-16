@@ -30,7 +30,7 @@ class NextwebExt {
 		])		
 	}
 
-	def private static <T> traverse(Tree<T> tree, Closure2<T, T> operation) {
+	def private static <T> void traverse(Tree<T> tree, Closure2<T, T> operation) {
 		
 		for (node: tree) {
 			
