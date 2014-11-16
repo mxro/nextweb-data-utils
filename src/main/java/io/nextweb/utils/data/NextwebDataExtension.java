@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 
 @SuppressWarnings("all")
 public class NextwebDataExtension {
@@ -41,16 +40,8 @@ public class NextwebDataExtension {
             if (_hasParent) {
               Tree<Link> _parent = it.parent();
               Link _value = _parent.value();
-              String _plus = ("from   " + _value);
-              InputOutput.<String>println(_plus);
               Link _value_1 = it.value();
-              String _plus_1 = ("remove " + _value_1);
-              InputOutput.<String>println(_plus_1);
-              Tree<Link> _parent_1 = it.parent();
-              Link _value_2 = _parent_1.value();
-              Link _value_3 = it.value();
-              _value_2.remove(_value_3);
-              InputOutput.<String>println("dooonit");
+              _value.remove(_value_1);
             }
           }
         }

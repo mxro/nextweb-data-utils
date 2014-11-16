@@ -29,11 +29,8 @@ class NextwebDataExtension {
 					val it = childNode
 					if (hasParent) {
 
-						println('from   '+parent.value)
-						println('remove '+value)
 						parent.value.remove(value)
 
-					println('dooonit')
 					}
 				}
 				cb.onSuccess(Success.INSTANCE)
