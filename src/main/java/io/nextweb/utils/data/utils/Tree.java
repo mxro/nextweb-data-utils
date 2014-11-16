@@ -8,8 +8,6 @@ import java.util.List;
 public class Tree<T extends Object> implements Iterable<Tree<T>> {
   private T root;
   
-  private Tree<T> parent;
-  
   private List<Tree<T>> children;
   
   public Tree(final T data) {
@@ -18,9 +16,7 @@ public class Tree<T extends Object> implements Iterable<Tree<T>> {
     this.children = _linkedList;
   }
   
-  public Tree<T> add(final T child) {
-    final Tree<T> childNode = new Tree<T>(child);
-    childNode.parent = this;
+  public Tree<T> add(final Tree<T> childNode) {
     this.children.add(childNode);
     return childNode;
   }

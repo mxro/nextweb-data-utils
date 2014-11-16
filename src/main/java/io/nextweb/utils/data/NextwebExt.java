@@ -1,10 +1,20 @@
 package io.nextweb.utils.data;
 
+import de.mxro.async.Async;
 import de.mxro.async.callbacks.ValueCallback;
+import de.mxro.fn.Closure;
+import de.mxro.fn.Closure2;
 import de.mxro.fn.Success;
 import io.nextweb.Entity;
 import io.nextweb.Link;
+import io.nextweb.ListQuery;
+import io.nextweb.Node;
+import io.nextweb.NodeList;
+import io.nextweb.Session;
+import io.nextweb.promise.exceptions.ExceptionListener;
+import io.nextweb.promise.exceptions.ExceptionResult;
 import io.nextweb.utils.data.utils.Tree;
+import java.util.List;
 
 @SuppressWarnings("all")
 public class NextwebExt {
@@ -28,7 +38,45 @@ public class NextwebExt {
    * Determines all <b>direct</b> children of a node.
    */
   public static Object collectDirectChildrenInt(final Link root, final ValueCallback<Tree<Link>> cb) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nType mismatch: cannot convert from Tree<Link> to Link");
+    final Session session = root.session();
+    final ListQuery qry = root.selectAll();
+    final ExceptionListener _function = new ExceptionListener() {
+      public void onFailure(final ExceptionResult er) {
+        Throwable _exception = er.exception();
+        cb.onFailure(_exception);
+      }
+    };
+    qry.catchExceptions(_function);
+    final Closure<NodeList> _function_1 = new Closure<NodeList>() {
+      public void apply(final NodeList children) {
+        List<Node> _nodes = children.nodes();
+        final Closure2<Node, ValueCallback<Tree<Link>>> _function = new Closure2<Node, ValueCallback<Tree<Link>>>() {
+          public void apply(final Node e, final ValueCallback<Tree<Link>> itmcb) {
+            Link _link = session.link(e);
+            NextwebExt.collectDirectChildrenInt(_link, itmcb);
+          }
+        };
+        final Closure<List<Tree<Link>>> _function_1 = new Closure<List<Tree<Link>>>() {
+          public void apply(final List<Tree<Link>> res) {
+            Link _link = session.link(root);
+            final Tree<Link> t = new Tree<Link>(_link);
+            for (final Tree<Link> childTree : res) {
+              Link _root = childTree.root();
+              String _uri = _root.uri();
+              String _uri_1 = root.uri();
+              boolean _startsWith = _uri.startsWith(_uri_1);
+              if (_startsWith) {
+                t.add(childTree);
+              }
+            }
+            cb.onSuccess(t);
+          }
+        };
+        ValueCallback<List<Tree<Link>>> _embed = Async.<List<Tree<Link>>>embed(cb, _function_1);
+        Async.<Node, Tree<Link>>forEach(_nodes, _function, _embed);
+      }
+    };
+    qry.get(_function_1);
+    return null;
   }
 }
