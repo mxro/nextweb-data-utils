@@ -30,25 +30,8 @@ public class NextwebDataExtension {
    * <p>Callback is called when all operations are defined, NOT executed.
    */
   public void removeRecursive(final Entity from, final Entity entity, final ValueCallback<Success> cb) {
-    final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
-      public void apply(final Tree<Link> tree) {
-        final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
-          public void apply(final Tree<Link> treeNode) {
-            boolean _hasParent = treeNode.hasParent();
-            if (_hasParent) {
-              Tree<Link> _parent = treeNode.parent();
-              Link _value = _parent.value();
-              Link _value_1 = treeNode.value();
-              _value.remove(_value_1);
-            }
-          }
-        };
-        NextwebDataExtension.this.tree.<Link, Object>forEachNode(tree, _function);
-        cb.onSuccess(Success.INSTANCE);
-      }
-    };
-    ValueCallback<Tree<Link>> _embed = Async.<Tree<Link>>embed(cb, _function);
-    NextwebDataExtension.collectDirectChildren(entity, _embed);
+    throw new Error("Unresolved compilation problems:"
+      + "\nThis expression is not allowed in this context, since it doesn\'t cause any side effects.");
   }
   
   public void removeSaveRecursive(final Entity from, final Entity entity, final ValueCallback<List<NextwebPromise<Success>>> cb) {
