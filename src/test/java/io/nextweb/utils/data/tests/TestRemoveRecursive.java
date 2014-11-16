@@ -7,6 +7,8 @@ import io.nextweb.Query;
 import io.nextweb.Session;
 import io.nextweb.common.LocalServer;
 import io.nextweb.promise.NextwebPromise;
+import io.nextweb.utils.data.NextwebExt;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure0;
 import org.hamcrest.Matcher;
 import org.junit.Assert;
@@ -22,11 +24,24 @@ public class TestRemoveRecursive {
     final Session session = AppjangleJre.createSession(server);
     final Query root = session.seed(server);
     final Query node1 = root.append("node1", "./node1");
+    Query _append = node1.append("a child");
+    _append.append("and another");
+    Query _append_1 = node1.append("a sibling");
+    _append_1.append("and something");
+    final Query child3 = node1.append("child3");
+    Query _append_2 = child3.append("a");
+    _append_2.append("b");
+    child3.append("c");
+    NextwebPromise<Success> _commit = session.commit();
+    _commit.get();
     NextwebPromise<Success> _close = session.close();
     _close.get();
     NextwebPromise<Success> _shutdown = server.shutdown();
     _shutdown.get();
   }
+  
+  @Extension
+  private NextwebExt ext = new NextwebExt();
   
   private static void assertArrayEquals(final Object[] expecteds, final Object[] actuals) {
     Assert.assertArrayEquals(expecteds, actuals);
