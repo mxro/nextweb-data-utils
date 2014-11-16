@@ -42,7 +42,7 @@ class NextwebExt {
 			
 			val res = newArrayList
 			
-			for (link: toList(tree)) {
+			for (treeNode: tree.toList) {
 				
 				
 				
