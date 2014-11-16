@@ -17,8 +17,9 @@ import io.nextweb.Session;
 import io.nextweb.promise.NextwebPromise;
 import io.nextweb.promise.exceptions.ExceptionListener;
 import io.nextweb.promise.exceptions.ExceptionResult;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Extension;
 
 @SuppressWarnings("all")
@@ -31,15 +32,15 @@ public class NextwebExt {
   public static void removeRecursive(final Entity from, final Entity entity, final ValueCallback<Success> cb) {
     final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
       public void apply(final Tree<Link> tree) {
-        final Consumer<Tree<Link>> _function = new Consumer<Tree<Link>>() {
-          public void accept(final Tree<Link> treeNode) {
+        final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
+          public void apply(final Tree<Link> treeNode) {
             Tree<Link> _parent = treeNode.parent();
             Link _value = _parent.value();
             Link _value_1 = treeNode.value();
             _value.remove(_value_1);
           }
         };
-        tree.forEach(_function);
+        NextwebExt.tree.<Link, Object>forEachNode(tree, _function);
         cb.onSuccess(Success.INSTANCE);
       }
     };
@@ -48,8 +49,17 @@ public class NextwebExt {
   }
   
   public static void removeSaveRecursive(final Entity from, final Entity entity, final ValueCallback<List<NextwebPromise<Success>>> cb) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nCannot make an implicit static reference to the non-static extension toList");
+    final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
+      public void apply(final Tree<Link> tree) {
+        final ArrayList<NextwebPromise<Success>> res = CollectionLiterals.<NextwebPromise<Success>>newArrayList();
+        List<Tree<Link>> _list = NextwebExt.tree.<Link>toList(tree);
+        for (final Tree<Link> treeNode : _list) {
+        }
+        cb.onSuccess(res);
+      }
+    };
+    ValueCallback<Tree<Link>> _embed = Async.<Tree<Link>>embed(cb, _function);
+    NextwebExt.collectDirectChildren(entity, _embed);
   }
   
   /**
@@ -133,5 +143,5 @@ public class NextwebExt {
   }
   
   @Extension
-  private TreeExtension tree = new TreeExtension();
+  private static TreeExtension tree = new TreeExtension();
 }

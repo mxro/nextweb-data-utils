@@ -26,7 +26,7 @@ class NextwebExt {
 		
 		entity.collectDirectChildren(cb.embed [tree |
 			
-			tree.forEach( [treeNode |
+			tree.forEachNode( [treeNode |
 				treeNode.parent.value.remove(treeNode.value)
 			])
 			
@@ -41,6 +41,7 @@ class NextwebExt {
 		entity.collectDirectChildren(cb.embed [tree|
 			
 			val res = newArrayList
+
 			
 			for (treeNode: tree.toList) {
 				
@@ -114,6 +115,6 @@ class NextwebExt {
 
 	}
 	
-	extension TreeExtension tree = new TreeExtension
+	static extension TreeExtension tree = new TreeExtension
 
 }
