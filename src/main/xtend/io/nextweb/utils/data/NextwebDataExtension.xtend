@@ -27,10 +27,10 @@ class NextwebDataExtension {
 			cb.embed [ tree |
 				tree.forEachNode(
 					[ if (hasParent) {
-							println('from   '+parent.value)
-							println('remove '+value)
+							//println('from   '+parent.value)
+							//println('remove '+value)
 							parent.value.remove(value)
-							println('dooonit')
+							//println('dooonit')
 						}
 					])
 				cb.onSuccess(Success.INSTANCE)
@@ -95,11 +95,11 @@ class NextwebDataExtension {
 					val t = new Tree<Link>(session.link(root))
 					for (Tree<Link> childTree : res) {
 
-						//if (childTree.value.uri().startsWith(root.uri())) {
+						if (childTree.value.uri().startsWith(root.uri())) {
 
 							t.add(childTree)
 
-						//}
+						}
 
 					}
 					cb.onSuccess(t)
