@@ -2,6 +2,7 @@ package io.nextweb.utils.data
 
 import de.mxro.async.Async
 import de.mxro.async.callbacks.ValueCallback
+import de.mxro.fn.Closure2
 import de.mxro.fn.Success
 import io.nextweb.Entity
 import io.nextweb.Link
@@ -31,7 +32,7 @@ class NextwebExt {
 		])		
 	}
 
-	def private static removeRecursiveInt(Entity from, Entity entity, ValueCallback<Success> cb) {
+	def private static <T> traverse(Tree<T> tree, Closure2<T, T> operation) {
 		
 	}
 

@@ -35,7 +35,7 @@ public class NextwebExt {
     NextwebExt.collectDirectChildren(entity, _embed);
   }
   
-  private static Object removeRecursiveInt(final Entity from, final Entity entity, final ValueCallback<Success> cb) {
+  private static <T extends Object> Object traverse(final Tree<T> tree, final Closure2<T, T> operation) {
     return null;
   }
   
