@@ -54,7 +54,14 @@ class NextwebExt {
 	}
 	
 	def private static <T> List<T> toList(Tree<T> t) {
-		
+		val l = newArrayList
+		for (node:t) {
+			
+			val cl = toList(node)
+			
+			
+		}
+		l
 	}
 
 	/**

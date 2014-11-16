@@ -8,7 +8,9 @@ import de.mxro.fn.Success;
 import io.nextweb.Entity;
 import io.nextweb.promise.NextwebPromise;
 import io.nextweb.utils.data.utils.Tree;
+import java.util.ArrayList;
 import java.util.List;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 
 @SuppressWarnings("all")
 public class NextwebExt {
@@ -43,7 +45,15 @@ public class NextwebExt {
   }
   
   private static <T extends Object> List<T> toList(final Tree<T> t) {
-    return null;
+    ArrayList<T> _xblockexpression = null;
+    {
+      final ArrayList<T> l = CollectionLiterals.<T>newArrayList();
+      for (final Tree<T> node : t) {
+        final List<T> cl = NextwebExt.<T>toList(node);
+      }
+      _xblockexpression = l;
+    }
+    return _xblockexpression;
   }
   
   /**
