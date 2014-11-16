@@ -16,9 +16,7 @@ import io.nextweb.Session;
 import io.nextweb.promise.NextwebPromise;
 import io.nextweb.promise.exceptions.ExceptionListener;
 import io.nextweb.promise.exceptions.ExceptionResult;
-import java.util.ArrayList;
 import java.util.List;
-import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 
 @SuppressWarnings("all")
 public class NextwebExt {
@@ -28,49 +26,15 @@ public class NextwebExt {
    * <p>Callback is called when all operations are defined, NOT executed.
    */
   public static void removeRecursive(final Entity from, final Entity entity, final ValueCallback<Success> cb) {
-    final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
-      public void apply(final Tree<Link> tree) {
-        final Closure2<Link, Link> _function = new Closure2<Link, Link>() {
-          public void apply(final Link parent, final Link node) {
-            parent.remove(node);
-          }
-        };
-        NextwebExt.<Link>traverse(tree, _function);
-        cb.onSuccess(Success.INSTANCE);
-      }
-    };
-    ValueCallback<Tree<Link>> _embed = Async.<Tree<Link>>embed(cb, _function);
-    NextwebExt.collectDirectChildren(entity, _embed);
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method traverse is undefined for the type NextwebExt"
+      + "\nThe method remove is undefined for the type NextwebExt"
+      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context.");
   }
   
   public static void removeSaveRecursive(final Entity from, final Entity entity, final ValueCallback<List<NextwebPromise<Success>>> cb) {
-    final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
-      public void apply(final Tree<Link> tree) {
-        final ArrayList<NextwebPromise<Success>> res = CollectionLiterals.<NextwebPromise<Success>>newArrayList();
-        List<Tree<Link>> _list = NextwebExt.<Link>toList(tree);
-        for (final Tree<Link> link : _list) {
-        }
-        cb.onSuccess(res);
-      }
-    };
-    ValueCallback<Tree<Link>> _embed = Async.<Tree<Link>>embed(cb, _function);
-    NextwebExt.collectDirectChildren(entity, _embed);
-  }
-  
-  private static <T extends Object> void traverse(final Tree<T> tree, final Closure2<T, T> operation) {
-    for (final Tree<T> node : tree) {
-      {
-        NextwebExt.<T>traverse(node, operation);
-        T _root = tree.root();
-        T _root_1 = node.root();
-        operation.apply(_root, _root_1);
-      }
-    }
-  }
-  
-  private static <T extends Object> List<Tree<T>> toList(final Tree<T> t) {
     throw new Error("Unresolved compilation problems:"
-      + "\nType mismatch: cannot convert from ArrayList<Object> to List<Tree<T>>");
+      + "\nThe method toList is undefined for the type NextwebExt");
   }
   
   /**
