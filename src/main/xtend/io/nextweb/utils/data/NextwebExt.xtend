@@ -23,12 +23,13 @@ class NextwebExt {
 	 * Determines all <b>direct</b> children of a node.
 	 */
 	def static collectDirectChildren(Entity of, ValueCallback<Tree<Link>> cb) {
+		
 	}
 
 	/**
 	 * Determines all <b>direct</b> children of a node.
 	 */
-	def static collectDirectChildrenInt(Link root, ValueCallback<Tree<Link>> cb) {
+	def static collectDirectChildren(Link root, ValueCallback<Tree<Link>> cb) {
 		val session = root.session()
 		val qry = root.selectAll
 
@@ -38,7 +39,7 @@ class NextwebExt {
 
 			Async.forEach(children.nodes(),
 				[ e, ValueCallback<Tree<Link>> itmcb |
-					collectDirectChildrenInt(session.link(e), itmcb)
+					collectDirectChildren(session.link(e), itmcb)
 				],
 				cb.embed [ res |
 					val t = new Tree<Link>(session.link(root))
@@ -46,8 +47,7 @@ class NextwebExt {
 
 						if (childTree.root.uri().startsWith(root.uri())) {
 
-							t.add(childTree)
-							
+							t.add(childTree)	
 							
 						}
 

@@ -37,7 +37,7 @@ public class NextwebExt {
   /**
    * Determines all <b>direct</b> children of a node.
    */
-  public static Object collectDirectChildrenInt(final Link root, final ValueCallback<Tree<Link>> cb) {
+  public static Object collectDirectChildren(final Link root, final ValueCallback<Tree<Link>> cb) {
     final Session session = root.session();
     final ListQuery qry = root.selectAll();
     final ExceptionListener _function = new ExceptionListener() {
@@ -53,7 +53,7 @@ public class NextwebExt {
         final Closure2<Node, ValueCallback<Tree<Link>>> _function = new Closure2<Node, ValueCallback<Tree<Link>>>() {
           public void apply(final Node e, final ValueCallback<Tree<Link>> itmcb) {
             Link _link = session.link(e);
-            NextwebExt.collectDirectChildrenInt(_link, itmcb);
+            NextwebExt.collectDirectChildren(_link, itmcb);
           }
         };
         final Closure<List<Tree<Link>>> _function_1 = new Closure<List<Tree<Link>>>() {
