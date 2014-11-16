@@ -1,6 +1,7 @@
 package io.nextweb.utils.data.tests
 
 import com.appjangle.jre.AppjangleJre
+import de.mxro.async.jre.AsyncJre
 import de.oehme.xtend.junit.JUnit
 import io.nextweb.utils.data.NextwebExt
 
@@ -25,8 +26,10 @@ class TestRemoveRecursive {
 		
 		session.commit.get
 		
-		
-		
+		AsyncJre.waitFor [cb |
+			NextwebExt.removeRecursive(root, node1, cb)
+		]
+
 		
 		session.close.get
 		server.shutdown.get

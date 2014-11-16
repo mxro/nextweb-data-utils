@@ -1,6 +1,9 @@
 package io.nextweb.utils.data.tests;
 
 import com.appjangle.jre.AppjangleJre;
+import de.mxro.async.Deferred;
+import de.mxro.async.callbacks.ValueCallback;
+import de.mxro.async.jre.AsyncJre;
 import de.mxro.fn.Success;
 import de.oehme.xtend.junit.JUnit;
 import io.nextweb.Query;
@@ -34,6 +37,12 @@ public class TestRemoveRecursive {
     child3.append("c");
     NextwebPromise<Success> _commit = session.commit();
     _commit.get();
+    final Deferred<Success> _function = new Deferred<Success>() {
+      public void get(final ValueCallback<Success> cb) {
+        NextwebExt.removeRecursive(root, node1, cb);
+      }
+    };
+    AsyncJre.<Success>waitFor(_function);
     NextwebPromise<Success> _close = session.close();
     _close.get();
     NextwebPromise<Success> _shutdown = server.shutdown();

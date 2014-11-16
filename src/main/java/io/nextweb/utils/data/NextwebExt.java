@@ -24,7 +24,7 @@ public class NextwebExt {
    * 
    * <p>Callback is called when all operations are defined, NOT executed.
    */
-  public void removeRecursive(final Entity from, final Entity entity, final ValueCallback<Success> cb) {
+  public static void removeRecursive(final Entity from, final Entity entity, final ValueCallback<Success> cb) {
     final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
       public void apply(final Tree<Link> tree) {
         final Closure2<Link, Link> _function = new Closure2<Link, Link>() {
