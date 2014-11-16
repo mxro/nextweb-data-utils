@@ -35,15 +35,19 @@ class NextwebExt {
 	}
 
 
-	def static void removeSaveRecursive(Entity from, Entity entity, ValueCallback<NextwebPromise<Success>> cb) {
+	def static void removeSaveRecursive(Entity from, Entity entity, ValueCallback<List<NextwebPromise<Success>>> cb) {
 		
 		entity.collectDirectChildren(cb.embed [tree|
+			
+			val res = newArrayList
 			
 			for (link: toList(tree)) {
 				
 				
 				
 			}
+			
+			cb.onSuccess(res)
 			
 		])
 		
@@ -61,7 +65,7 @@ class NextwebExt {
 		
 	}
 	
-	def private static <T> List<T> toList(Tree<T> t) {
+	def private static <T> List<Tree<T>> toList(Tree<T> t) {
 		val l = newArrayList
 		for (node:t) {
 			
