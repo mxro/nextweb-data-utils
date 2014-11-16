@@ -24,8 +24,13 @@ public class NextwebExt {
    * 
    * <p>Callback is called when all operations are defined, NOT executed.
    */
-  public static Object removeRecursive(final Entity from, final Entity entity, final ValueCallback<Success> cb) {
-    return null;
+  public static void removeRecursive(final Entity from, final Entity entity, final ValueCallback<Success> cb) {
+    final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
+      public void apply(final Tree<Link> tree) {
+      }
+    };
+    ValueCallback<Tree<Link>> _embed = Async.<Tree<Link>>embed(cb, _function);
+    NextwebExt.collectDirectChildren(entity, _embed);
   }
   
   /**

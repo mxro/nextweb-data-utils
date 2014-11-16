@@ -19,6 +19,12 @@ class NextwebExt {
 	 * <p>Callback is called when all operations are defined, NOT executed.
 	 */
 	def static removeRecursive(Entity from, Entity entity, ValueCallback<Success> cb) {
+		
+		entity.collectDirectChildren(cb.embed [tree |
+			
+			
+			
+		])		
 	}
 
 	/**
