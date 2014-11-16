@@ -52,7 +52,7 @@ public class NextwebDataExtension {
     this.collectDirectChildren(entity, _embed);
   }
   
-  public void removeSaveRecursive(final Entity from, final Entity entity, final ValueCallback<List<NextwebPromise<Success>>> cb) {
+  public void removeSafeRecursive(final Entity from, final Entity entity, final ValueCallback<List<NextwebPromise<Success>>> cb) {
     final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
       public void apply(final Tree<Link> tree) {
         final ArrayList<NextwebPromise<Success>> res = CollectionLiterals.<NextwebPromise<Success>>newArrayList();

@@ -35,7 +35,7 @@ class NextwebDataExtension {
 			])
 	}
 
-	def void removeSaveRecursive(Entity from, Entity entity, ValueCallback<List<NextwebPromise<Success>>> cb) {
+	def void removeSafeRecursive(Entity from, Entity entity, ValueCallback<List<NextwebPromise<Success>>> cb) {
 
 		entity.collectDirectChildren(
 			cb.embed [ tree |
