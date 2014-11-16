@@ -5,6 +5,7 @@ import de.mxro.async.callbacks.ValueCallback
 import de.mxro.fn.Success
 import io.nextweb.Entity
 import io.nextweb.Link
+import io.nextweb.Node
 import io.nextweb.utils.data.utils.Tree
 
 import static extension de.mxro.async.Async.embed
@@ -23,7 +24,16 @@ class NextwebExt {
 	 * Determines all <b>direct</b> children of a node.
 	 */
 	def static collectDirectChildren(Entity of, ValueCallback<Tree<Link>> cb) {
+		if (of instanceof Link) {
+			val link = of
+			collectDirectChildren(link, cb)
+			return;
+		}
 		
+		if (of instanceof Node) {
+			val link = of.session().link(of as Node)
+			
+		}
 	}
 
 	/**

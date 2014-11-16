@@ -30,14 +30,22 @@ public class NextwebExt {
   /**
    * Determines all <b>direct</b> children of a node.
    */
-  public static Object collectDirectChildren(final Entity of, final ValueCallback<Tree<Link>> cb) {
-    return null;
+  public static void collectDirectChildren(final Entity of, final ValueCallback<Tree<Link>> cb) {
+    if ((of instanceof Link)) {
+      final Link link = ((Link)of);
+      NextwebExt.collectDirectChildren(link, cb);
+      return;
+    }
+    if ((of instanceof Node)) {
+      Session _session = ((Node)of).session();
+      final Link link_1 = _session.link(((Node) of));
+    }
   }
   
   /**
    * Determines all <b>direct</b> children of a node.
    */
-  public static Object collectDirectChildren(final Link root, final ValueCallback<Tree<Link>> cb) {
+  public static void collectDirectChildren(final Link root, final ValueCallback<Tree<Link>> cb) {
     final Session session = root.session();
     final ListQuery qry = root.selectAll();
     final ExceptionListener _function = new ExceptionListener() {
@@ -77,6 +85,5 @@ public class NextwebExt {
       }
     };
     qry.get(_function_1);
-    return null;
   }
 }
