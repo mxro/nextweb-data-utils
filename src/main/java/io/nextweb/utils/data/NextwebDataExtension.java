@@ -23,13 +23,13 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Extension;
 
 @SuppressWarnings("all")
-public class NextwebExt {
+public class NextwebDataExtension {
   /**
    * <p>Removes the specified node from the defined <code>form</code> node and all its <b>direct</b> children.
    * 
    * <p>Callback is called when all operations are defined, NOT executed.
    */
-  public static void removeRecursive(final Entity from, final Entity entity, final ValueCallback<Success> cb) {
+  public void removeRecursive(final Entity from, final Entity entity, final ValueCallback<Success> cb) {
     final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
       public void apply(final Tree<Link> tree) {
         final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
@@ -40,26 +40,26 @@ public class NextwebExt {
             _value.remove(_value_1);
           }
         };
-        NextwebExt.tree.<Link, Object>forEachNode(tree, _function);
+        NextwebDataExtension.this.tree.<Link, Object>forEachNode(tree, _function);
         cb.onSuccess(Success.INSTANCE);
       }
     };
     ValueCallback<Tree<Link>> _embed = Async.<Tree<Link>>embed(cb, _function);
-    NextwebExt.collectDirectChildren(entity, _embed);
+    NextwebDataExtension.collectDirectChildren(entity, _embed);
   }
   
-  public static void removeSaveRecursive(final Entity from, final Entity entity, final ValueCallback<List<NextwebPromise<Success>>> cb) {
+  public void removeSaveRecursive(final Entity from, final Entity entity, final ValueCallback<List<NextwebPromise<Success>>> cb) {
     final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
       public void apply(final Tree<Link> tree) {
         final ArrayList<NextwebPromise<Success>> res = CollectionLiterals.<NextwebPromise<Success>>newArrayList();
-        List<Tree<Link>> _list = NextwebExt.tree.<Link>toList(tree);
+        List<Tree<Link>> _list = NextwebDataExtension.this.tree.<Link>toList(tree);
         for (final Tree<Link> treeNode : _list) {
         }
         cb.onSuccess(res);
       }
     };
     ValueCallback<Tree<Link>> _embed = Async.<Tree<Link>>embed(cb, _function);
-    NextwebExt.collectDirectChildren(entity, _embed);
+    NextwebDataExtension.collectDirectChildren(entity, _embed);
   }
   
   /**
@@ -68,13 +68,13 @@ public class NextwebExt {
   public static void collectDirectChildren(final Entity of, final ValueCallback<Tree<Link>> cb) {
     if ((of instanceof Link)) {
       final Link link = ((Link)of);
-      NextwebExt.collectDirectChildren(link, cb);
+      NextwebDataExtension.collectDirectChildren(link, cb);
       return;
     }
     if ((of instanceof Node)) {
       Session _session = ((Node)of).session();
       final Link link_1 = _session.link(((Node) of));
-      NextwebExt.collectDirectChildren(link_1, cb);
+      NextwebDataExtension.collectDirectChildren(link_1, cb);
       return;
     }
     if ((of instanceof Query)) {
@@ -90,7 +90,7 @@ public class NextwebExt {
         public void apply(final Node node) {
           Session _session = node.session();
           Link _link = _session.link(node);
-          NextwebExt.collectDirectChildren(_link, cb);
+          NextwebDataExtension.collectDirectChildren(_link, cb);
         }
       };
       query.get(_function_1);
@@ -116,7 +116,7 @@ public class NextwebExt {
         final Closure2<Node, ValueCallback<Tree<Link>>> _function = new Closure2<Node, ValueCallback<Tree<Link>>>() {
           public void apply(final Node e, final ValueCallback<Tree<Link>> itmcb) {
             Link _link = session.link(e);
-            NextwebExt.collectDirectChildren(_link, itmcb);
+            NextwebDataExtension.collectDirectChildren(_link, itmcb);
           }
         };
         final Closure<List<Tree<Link>>> _function_1 = new Closure<List<Tree<Link>>>() {
@@ -143,5 +143,5 @@ public class NextwebExt {
   }
   
   @Extension
-  private static TreeExtension tree = new TreeExtension();
+  private TreeExtension tree = new TreeExtension();
 }

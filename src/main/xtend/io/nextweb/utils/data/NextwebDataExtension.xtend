@@ -15,14 +15,14 @@ import java.util.List
 import static extension de.mxro.async.Async.embed
 import de.mxro.tree.TreeExtension
 
-class NextwebExt {
+class NextwebDataExtension {
 
 	/**
 	 * <p>Removes the specified node from the defined <code>form</code> node and all its <b>direct</b> children.
 	 * 
 	 * <p>Callback is called when all operations are defined, NOT executed.
 	 */
-	def static void removeRecursive(Entity from, Entity entity, ValueCallback<Success> cb) {
+	def  void removeRecursive(Entity from, Entity entity, ValueCallback<Success> cb) {
 		
 		entity.collectDirectChildren(cb.embed [tree |
 			
@@ -36,7 +36,7 @@ class NextwebExt {
 	}
 
 
-	def static void removeSaveRecursive(Entity from, Entity entity, ValueCallback<List<NextwebPromise<Success>>> cb) {
+	def void removeSaveRecursive(Entity from, Entity entity, ValueCallback<List<NextwebPromise<Success>>> cb) {
 		
 		entity.collectDirectChildren(cb.embed [tree|
 			
@@ -45,7 +45,7 @@ class NextwebExt {
 			
 			for (treeNode: tree.toList) {
 				
-				
+				res.add(treeNode.parent.value.removeSafe(treeNode.value))
 				
 			}
 			
@@ -115,6 +115,6 @@ class NextwebExt {
 
 	}
 	
-	static extension TreeExtension tree = new TreeExtension
+	extension TreeExtension tree = new TreeExtension
 
 }
