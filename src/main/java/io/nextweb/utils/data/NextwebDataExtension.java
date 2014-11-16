@@ -47,8 +47,7 @@ public class NextwebDataExtension {
               Tree<Link> _parent_1 = it.parent();
               Link _value_2 = _parent_1.value();
               Link _value_3 = it.value();
-              NextwebPromise<Success> _removeSafe = _value_2.removeSafe(_value_3);
-              _removeSafe.get();
+              _value_2.remove(_value_3);
               InputOutput.<String>println("dooonit");
             }
           }

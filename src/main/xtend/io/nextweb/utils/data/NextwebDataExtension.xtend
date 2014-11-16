@@ -29,7 +29,7 @@ class NextwebDataExtension {
 					[ if (hasParent) {
 							println('from   '+parent.value)
 							println('remove '+value)
-							parent.value.removeSafe(value).get
+							parent.value.remove(value)
 							println('dooonit')
 						}
 					])
