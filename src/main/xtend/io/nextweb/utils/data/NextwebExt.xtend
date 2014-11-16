@@ -42,13 +42,12 @@ class NextwebExt {
 				],
 				cb.embed [ res |
 					val t = new Tree<Link>(session.link(root))
-					for (link : res) {
+					for (Tree<Link> childTree : res) {
 
-						if (link.uri().startsWith(root.uri())) {
+						if (childTree.root.uri().startsWith(root.uri())) {
 
-							val childTree = t.add(link)
-							
 							t.add(childTree)
+							
 							
 						}
 
