@@ -10,50 +10,54 @@ import io.nextweb.utils.data.utils.Tree
 import static extension de.mxro.async.Async.embed
 
 class NextwebExt {
-	
+
 	/**
 	 * <p>Removes the specified node from the defined <code>form</code> node and all its <b>direct</b> children.
 	 * 
 	 * <p>Callback is called when all operations are defined, NOT executed.
 	 */
 	def static removeRecursive(Entity from, Entity entity, ValueCallback<Success> cb) {
-		
 	}
-	
+
 	/**
 	 * Determines all <b>direct</b> children of a node.
 	 */
 	def static collectDirectChildren(Entity of, ValueCallback<Tree<Link>> cb) {
-		
 	}
-	
+
 	/**
 	 * Determines all <b>direct</b> children of a node.
 	 */
-	def static collectDirectChildren(Tree<Link> root, ValueCallback<Tree<Link>> cb) {
-		val session = root.root.session()
-		val qry = root.root.selectAll
-		
-		qry.catchExceptions [er|cb.onFailure(er.exception)]
-		
-		qry.get [children|
-			val t = new Tree<Link>(session.link(root.root))
-			
-			
-			Async.forEach(children.nodes(), [e, itmcb | ], cb.embed [res |
-				
-			] 
-			
-			for (child: children) {
-				val childTree = t.add(session.link(child))
-				
-				collectDirectChildren(childDree)
-				
-			}
-			
-			
+	def static collectDirectChildren(Link root, ValueCallback<Tree<Link>> cb) {
+		val session = root.session()
+		val qry = root.selectAll
+
+		qry.catchExceptions[er|cb.onFailure(er.exception)]
+
+		qry.get [ children |
+
+			Async.forEach(children.nodes(),
+				[ e, itmcb |
+					collectDirectChildren(root, itmcb)
+				],
+				cb.embed [ res |
+					val t = new Tree<Link>(session.link(root))
+					for (link : res) {
+
+						if (link.uri.startsWith(root.uri)) {
+
+							val childTree = t.add(link)
+							
+							t.add(childTree)
+							
+						}
+
+					}
+					
+					cb.onSuccess(t)
+				])
 		]
-		
+
 	}
-	
+
 }

@@ -27,10 +27,12 @@ public class NextwebExt {
   /**
    * Determines all <b>direct</b> children of a node.
    */
-  public static void collectDirectChildren(final Tree<Link> root, final ValueCallback<Tree<Link>> cb) {
+  public static Object collectDirectChildren(final Link root, final ValueCallback<Tree<Link>> cb) {
     throw new Error("Unresolved compilation problems:"
-      + "\nmissing \')\' at \'for\'"
-      + "\nThe method or field childDree is undefined for the type NextwebExt"
-      + "\nInvalid number of arguments. The method collectDirectChildren(Entity, ValueCallback<Tree<Link>>) is not applicable for the arguments (Object)");
+      + "\nThe method uri is undefined for the type NextwebExt"
+      + "\nAmbiguous feature call.\nThe methods\n\turi() in Link and\n\tgetUri() in Link\nboth match."
+      + "\nType mismatch: cannot convert from Tree<Link> to Link"
+      + "\nType mismatch: cannot convert from ValueCallback<Link> to ValueCallback<Tree<Link>>"
+      + "\nstartsWith cannot be resolved");
   }
 }
