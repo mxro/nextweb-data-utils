@@ -4,7 +4,7 @@ import de.mxro.async.callbacks.ValueCallback
 import de.mxro.fn.Success
 import io.nextweb.Entity
 import io.nextweb.Link
-import java.util.List
+import io.nextweb.utils.data.utils.Tree
 
 class NextwebExt {
 	
@@ -20,7 +20,18 @@ class NextwebExt {
 	/**
 	 * Determines all <b>direct</b> children of a node.
 	 */
-	def static collectDirectChildren(Entity of, ValueCallback<List<Link>> cb) {
+	def static collectDirectChildren(Entity of, ValueCallback<Tree<Link>> cb) {
+		val session = of.session()
+		val qry = of.selectAll
+		
+		qry.catchExceptions [er|cb.onFailure(er.exception)]
+		
+		qry.get [children|
+			val t = new Tree<Link>(session.link(of.get))
+			for (child: children) {
+				
+			}
+		]
 		
 	}
 	
