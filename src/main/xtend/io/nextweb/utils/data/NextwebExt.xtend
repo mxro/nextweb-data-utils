@@ -1,10 +1,13 @@
 package io.nextweb.utils.data
 
+import de.mxro.async.Async
 import de.mxro.async.callbacks.ValueCallback
 import de.mxro.fn.Success
 import io.nextweb.Entity
 import io.nextweb.Link
 import io.nextweb.utils.data.utils.Tree
+
+import static extension de.mxro.async.Async.embed
 
 class NextwebExt {
 	
@@ -28,17 +31,23 @@ class NextwebExt {
 	 * Determines all <b>direct</b> children of a node.
 	 */
 	def static collectDirectChildren(Tree<Link> root, ValueCallback<Tree<Link>> cb) {
-		val session = root..session()
-		val qry = of.selectAll
+		val session = root.root.session()
+		val qry = root.root.selectAll
 		
 		qry.catchExceptions [er|cb.onFailure(er.exception)]
 		
 		qry.get [children|
-			val t = new Tree<Link>(session.link(of.get))
+			val t = new Tree<Link>(session.link(root.root))
+			
+			
+			Async.forEach(children.nodes(), [e, itmcb | ], cb.embed [res |
+				
+			] 
+			
 			for (child: children) {
 				val childTree = t.add(session.link(child))
 				
-				
+				collectDirectChildren(childDree)
 				
 			}
 			

@@ -27,20 +27,10 @@ public class NextwebExt {
   /**
    * Determines all <b>direct</b> children of a node.
    */
-  public static Object collectDirectChildren(final Tree<Link> root, final ValueCallback<Tree<Link>> cb) {
+  public static void collectDirectChildren(final Tree<Link> root, final ValueCallback<Tree<Link>> cb) {
     throw new Error("Unresolved compilation problems:"
-      + "\n.. cannot be resolved."
-      + "\nThe method or field session is undefined for the type NextwebExt"
-      + "\nThe method or field of is undefined for the type NextwebExt"
-      + "\nThe method exception is undefined for the type NextwebExt"
-      + "\nThe method or field of is undefined for the type NextwebExt"
-      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
-      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
-      + "\nselectAll cannot be resolved"
-      + "\ncatchExceptions cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nlink cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nlink cannot be resolved");
+      + "\nmissing \')\' at \'for\'"
+      + "\nThe method or field childDree is undefined for the type NextwebExt"
+      + "\nInvalid number of arguments. The method collectDirectChildren(Entity, ValueCallback<Tree<Link>>) is not applicable for the arguments (Object)");
   }
 }
