@@ -30,25 +30,13 @@ public class NextwebDataExtension {
    * <p>Callback is called when all operations are defined, NOT executed.
    */
   public void removeRecursive(final Entity from, final Entity entity, final ValueCallback<Success> cb) {
-    final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
-      public void apply(final Tree<Link> tree) {
-        final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
-          public void apply(final Tree<Link> it) {
-            boolean _hasParent = it.hasParent();
-            if (_hasParent) {
-              Tree<Link> _parent = it.parent();
-              Link _value = _parent.value();
-              Link _value_1 = it.value();
-              _value.remove(_value_1);
-            }
-          }
-        };
-        NextwebDataExtension.this.tree.<Link, Object>forEachNode(tree, _function);
-        cb.onSuccess(Success.INSTANCE);
-      }
-    };
-    ValueCallback<Tree<Link>> _embed = Async.<Tree<Link>>embed(cb, _function);
-    this.collectDirectChildren(entity, _embed);
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field hasParent is undefined for the type NextwebDataExtension"
+      + "\nThe method or field parent is undefined for the type NextwebDataExtension"
+      + "\nThe method or field value is undefined for the type NextwebDataExtension"
+      + "\nInvalid number of arguments. The method toList(Tree<T>) is not applicable for the arguments (Tree<Link>,ValueCallback<Object>)"
+      + "\nvalue cannot be resolved"
+      + "\nremove cannot be resolved");
   }
   
   public void removeSaveRecursive(final Entity from, final Entity entity, final ValueCallback<List<NextwebPromise<Success>>> cb) {

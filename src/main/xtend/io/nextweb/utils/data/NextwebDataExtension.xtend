@@ -25,14 +25,17 @@ class NextwebDataExtension {
 
 		entity.collectDirectChildren(
 			cb.embed [ tree |
-				tree.forEachNode(
-					[ if (hasParent) {
+				tree.toList(cb.embed [ 
+					if (hasParent) {
 							//println('from   '+parent.value)
 							//println('remove '+value)
 							parent.value.remove(value)
 							//println('dooonit')
-						}
-					])
+						}	
+				])
+				
+				
+				
 				cb.onSuccess(Success.INSTANCE)
 			])
 	}
