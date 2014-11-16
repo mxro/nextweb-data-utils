@@ -32,7 +32,6 @@ class TestRemoveRecursive {
 		
 		session.commit.get
 		
-		
 		waitFor [cb |
 			
 			root.collectDirectChildren(cb.embed [Tree<Link> tree |

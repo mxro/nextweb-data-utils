@@ -41,12 +41,13 @@ class NextwebDataExtension {
 			cb.embed [ tree |
 				val res = newArrayList
 				for (treeNode : tree.toList) {
-
-					res.add(treeNode.parent.value.removeSafe(treeNode.value))
-
+					val it = treeNode
+					if (hasParent) {
+						res.add(parent.value.removeSafe(value))
+					}
 				}
-				cb.onSuccess(res)
-			])
+
+		cb.onSuccess(res)])
 
 	}
 
@@ -109,3 +110,4 @@ class NextwebDataExtension {
 	extension TreeExtension tree = new TreeExtension
 
 }
+		
