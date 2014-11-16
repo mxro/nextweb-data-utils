@@ -54,6 +54,11 @@ public class NextwebDataExtension {
         final ArrayList<NextwebPromise<Success>> res = CollectionLiterals.<NextwebPromise<Success>>newArrayList();
         List<Tree<Link>> _list = NextwebDataExtension.this.tree.<Link>toList(tree);
         for (final Tree<Link> treeNode : _list) {
+          Tree<Link> _parent = treeNode.parent();
+          Link _value = _parent.value();
+          Link _value_1 = treeNode.value();
+          NextwebPromise<Success> _removeSafe = _value.removeSafe(_value_1);
+          res.add(_removeSafe);
         }
         cb.onSuccess(res);
       }

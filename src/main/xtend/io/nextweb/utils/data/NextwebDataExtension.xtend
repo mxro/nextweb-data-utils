@@ -2,9 +2,9 @@ package io.nextweb.utils.data
 
 import de.mxro.async.Async
 import de.mxro.async.callbacks.ValueCallback
-import de.mxro.fn.Closure2
 import de.mxro.fn.Success
 import de.mxro.tree.Tree
+import de.mxro.tree.TreeExtension
 import io.nextweb.Entity
 import io.nextweb.Link
 import io.nextweb.Node
@@ -13,7 +13,6 @@ import io.nextweb.promise.NextwebPromise
 import java.util.List
 
 import static extension de.mxro.async.Async.embed
-import de.mxro.tree.TreeExtension
 
 class NextwebDataExtension {
 

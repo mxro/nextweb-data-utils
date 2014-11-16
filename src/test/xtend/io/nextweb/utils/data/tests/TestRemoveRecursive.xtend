@@ -27,7 +27,7 @@ class TestRemoveRecursive {
 		session.commit.get
 		
 		AsyncJre.waitFor [cb |
-			NextwebDataExtension.removeRecursive(root, node1, cb)
+			root.removeRecursive( node1, cb)
 		]
 		session.commit.get
 		
