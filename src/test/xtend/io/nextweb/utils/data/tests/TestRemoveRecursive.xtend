@@ -6,6 +6,7 @@ import de.oehme.xtend.junit.JUnit
 import io.nextweb.utils.data.NextwebDataExtension
 
 import static de.mxro.async.jre.AsyncJre.*
+import de.mxro.fn.Success
 
 @JUnit
 class TestRemoveRecursive {
@@ -30,6 +31,11 @@ class TestRemoveRecursive {
 		
 		
 		waitFor [cb |
+			
+			root.collectDirectChildren [Tree<Link> tree |
+				println(tree.toList)
+				cb.onSuccess(Success.INSTANCE)
+			]
 			
 		]
 		
