@@ -26,8 +26,8 @@ class NextwebExt {
 		
 		entity.collectDirectChildren(cb.embed [tree |
 			
-			tree.forEach( [parent, node |
-				parent.remove(node)
+			tree.forEach( [treeNode |
+				treeNode.parent.value.remove(treeNode.value)
 			])
 			
 			cb.onSuccess(Success.INSTANCE)
@@ -100,7 +100,7 @@ class NextwebExt {
 					val t = new Tree<Link>(session.link(root))
 					for (Tree<Link> childTree : res) {
 
-						if (childTree.root.uri().startsWith(root.uri())) {
+						if (childTree.value.uri().startsWith(root.uri())) {
 
 							t.add(childTree)	
 							

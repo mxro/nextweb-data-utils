@@ -18,6 +18,7 @@ import io.nextweb.promise.NextwebPromise;
 import io.nextweb.promise.exceptions.ExceptionListener;
 import io.nextweb.promise.exceptions.ExceptionResult;
 import java.util.List;
+import java.util.function.Consumer;
 import org.eclipse.xtext.xbase.lib.Extension;
 
 @SuppressWarnings("all")
@@ -28,8 +29,22 @@ public class NextwebExt {
    * <p>Callback is called when all operations are defined, NOT executed.
    */
   public static void removeRecursive(final Entity from, final Entity entity, final ValueCallback<Success> cb) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method remove is undefined for the type NextwebExt");
+    final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
+      public void apply(final Tree<Link> tree) {
+        final Consumer<Tree<Link>> _function = new Consumer<Tree<Link>>() {
+          public void accept(final Tree<Link> treeNode) {
+            Tree<Link> _parent = treeNode.parent();
+            Link _value = _parent.value();
+            Link _value_1 = treeNode.value();
+            _value.remove(_value_1);
+          }
+        };
+        tree.forEach(_function);
+        cb.onSuccess(Success.INSTANCE);
+      }
+    };
+    ValueCallback<Tree<Link>> _embed = Async.<Tree<Link>>embed(cb, _function);
+    NextwebExt.collectDirectChildren(entity, _embed);
   }
   
   public static void removeSaveRecursive(final Entity from, final Entity entity, final ValueCallback<List<NextwebPromise<Success>>> cb) {
@@ -99,8 +114,8 @@ public class NextwebExt {
             Link _link = session.link(root);
             final Tree<Link> t = new Tree<Link>(_link);
             for (final Tree<Link> childTree : res) {
-              Link _root = childTree.root();
-              String _uri = _root.uri();
+              Link _value = childTree.value();
+              String _uri = _value.uri();
               String _uri_1 = root.uri();
               boolean _startsWith = _uri.startsWith(_uri_1);
               if (_startsWith) {
