@@ -27,9 +27,10 @@ class NextwebDataExtension {
 			cb.embed [ tree |
 				tree.forEachNode(
 					[ if (hasParent) {
-							println('from  '+parent.value)
+							println('from   '+parent.value)
 							println('remove '+value)
-							parent.value.remove(value)
+							parent.value.removeSafe(value).get
+							println('dooonit')
 						}
 					])
 				cb.onSuccess(Success.INSTANCE)

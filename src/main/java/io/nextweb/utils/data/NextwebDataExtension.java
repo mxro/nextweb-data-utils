@@ -39,7 +39,7 @@ public class NextwebDataExtension {
             if (_hasParent) {
               Tree<Link> _parent = it.parent();
               Link _value = _parent.value();
-              String _plus = ("from  " + _value);
+              String _plus = ("from   " + _value);
               InputOutput.<String>println(_plus);
               Link _value_1 = it.value();
               String _plus_1 = ("remove " + _value_1);
@@ -47,7 +47,9 @@ public class NextwebDataExtension {
               Tree<Link> _parent_1 = it.parent();
               Link _value_2 = _parent_1.value();
               Link _value_3 = it.value();
-              _value_2.remove(_value_3);
+              NextwebPromise<Success> _removeSafe = _value_2.removeSafe(_value_3);
+              _removeSafe.get();
+              InputOutput.<String>println("dooonit");
             }
           }
         };
