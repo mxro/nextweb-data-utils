@@ -27,15 +27,19 @@ public class NextwebExt {
   public static void removeRecursive(final Entity from, final Entity entity, final ValueCallback<Success> cb) {
     final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
       public void apply(final Tree<Link> tree) {
-        for (final Tree<Link> node : tree) {
-        }
+        final Closure2<Link, Link> _function = new Closure2<Link, Link>() {
+          public void apply(final Link parent, final Link node) {
+            parent.remove(node);
+          }
+        };
+        NextwebExt.<Link>traverse(tree, _function);
       }
     };
     ValueCallback<Tree<Link>> _embed = Async.<Tree<Link>>embed(cb, _function);
     NextwebExt.collectDirectChildren(entity, _embed);
   }
   
-  private static <T extends Object> Object traverse(final Tree<T> tree, final Closure2<T, T> operation) {
+  private static <T extends Object> void traverse(final Tree<T> tree, final Closure2<T, T> operation) {
     for (final Tree<T> node : tree) {
       {
         NextwebExt.<T>traverse(node, operation);
@@ -44,7 +48,6 @@ public class NextwebExt {
         operation.apply(_root, _root_1);
       }
     }
-    return null;
   }
   
   /**
