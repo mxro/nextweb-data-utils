@@ -12,6 +12,7 @@ import io.nextweb.Node;
 import io.nextweb.NodeList;
 import io.nextweb.Query;
 import io.nextweb.Session;
+import io.nextweb.promise.NextwebPromise;
 import io.nextweb.promise.exceptions.ExceptionListener;
 import io.nextweb.promise.exceptions.ExceptionResult;
 import io.nextweb.utils.data.utils.Tree;
@@ -34,6 +35,15 @@ public class NextwebExt {
         };
         NextwebExt.<Link>traverse(tree, _function);
         cb.onSuccess(Success.INSTANCE);
+      }
+    };
+    ValueCallback<Tree<Link>> _embed = Async.<Tree<Link>>embed(cb, _function);
+    NextwebExt.collectDirectChildren(entity, _embed);
+  }
+  
+  public static void removeSaveRecursive(final Entity from, final Entity entity, final ValueCallback<NextwebPromise<Success>> cb) {
+    final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
+      public void apply(final Tree<Link> tree) {
       }
     };
     ValueCallback<Tree<Link>> _embed = Async.<Tree<Link>>embed(cb, _function);

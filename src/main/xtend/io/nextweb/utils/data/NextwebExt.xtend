@@ -8,6 +8,7 @@ import io.nextweb.Entity
 import io.nextweb.Link
 import io.nextweb.Node
 import io.nextweb.Query
+import io.nextweb.promise.NextwebPromise
 import io.nextweb.utils.data.utils.Tree
 
 import static extension de.mxro.async.Async.embed
@@ -19,7 +20,7 @@ class NextwebExt {
 	 * 
 	 * <p>Callback is called when all operations are defined, NOT executed.
 	 */
-	def static removeRecursive(Entity from, Entity entity, ValueCallback<Success> cb) {
+	def static void removeRecursive(Entity from, Entity entity, ValueCallback<Success> cb) {
 		
 		entity.collectDirectChildren(cb.embed [tree |
 			
@@ -30,6 +31,15 @@ class NextwebExt {
 			cb.onSuccess(Success.INSTANCE)
 			
 		])		
+	}
+
+
+	def static void removeSaveRecursive(Entity from, Entity entity, ValueCallback<NextwebPromise<Success>> cb) {
+		
+		entity.collectDirectChildren(cb.embed [tree|
+			
+		])
+		
 	}
 
 	def private static <T> void traverse(Tree<T> tree, Closure2<T, T> operation) {
