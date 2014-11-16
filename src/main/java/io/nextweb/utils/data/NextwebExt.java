@@ -10,6 +10,7 @@ import io.nextweb.Link;
 import io.nextweb.ListQuery;
 import io.nextweb.Node;
 import io.nextweb.NodeList;
+import io.nextweb.Query;
 import io.nextweb.Session;
 import io.nextweb.promise.exceptions.ExceptionListener;
 import io.nextweb.promise.exceptions.ExceptionResult;
@@ -39,6 +40,26 @@ public class NextwebExt {
     if ((of instanceof Node)) {
       Session _session = ((Node)of).session();
       final Link link_1 = _session.link(((Node) of));
+      NextwebExt.collectDirectChildren(link_1, cb);
+      return;
+    }
+    if ((of instanceof Query)) {
+      final Query query = ((Query)of);
+      final ExceptionListener _function = new ExceptionListener() {
+        public void onFailure(final ExceptionResult er) {
+          Throwable _exception = er.exception();
+          cb.onFailure(_exception);
+        }
+      };
+      query.catchExceptions(_function);
+      final Closure<Node> _function_1 = new Closure<Node>() {
+        public void apply(final Node node) {
+          Session _session = node.session();
+          Link _link = _session.link(node);
+          NextwebExt.collectDirectChildren(_link, cb);
+        }
+      };
+      query.get(_function_1);
     }
   }
   

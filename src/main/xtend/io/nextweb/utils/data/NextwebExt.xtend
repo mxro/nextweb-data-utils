@@ -6,6 +6,7 @@ import de.mxro.fn.Success
 import io.nextweb.Entity
 import io.nextweb.Link
 import io.nextweb.Node
+import io.nextweb.Query
 import io.nextweb.utils.data.utils.Tree
 
 import static extension de.mxro.async.Async.embed
@@ -23,23 +24,32 @@ class NextwebExt {
 	/**
 	 * Determines all <b>direct</b> children of a node.
 	 */
-	def static collectDirectChildren(Entity of, ValueCallback<Tree<Link>> cb) {
+	def static void collectDirectChildren(Entity of, ValueCallback<Tree<Link>> cb) {
 		if (of instanceof Link) {
 			val link = of
 			collectDirectChildren(link, cb)
-			return;
+			return
 		}
 		
 		if (of instanceof Node) {
 			val link = of.session().link(of as Node)
-			
+			collectDirectChildren(link, cb)
+			return
+		}
+		
+		if (of instanceof Query) {
+			val query = of
+			query.catchExceptions [er | cb.onFailure(er.exception)]
+			query.get [node|
+				collectDirectChildren(node.session().link(node), cb)
+			]
 		}
 	}
 
 	/**
 	 * Determines all <b>direct</b> children of a node.
 	 */
-	def static collectDirectChildren(Link root, ValueCallback<Tree<Link>> cb) {
+	def static void collectDirectChildren(Link root, ValueCallback<Tree<Link>> cb) {
 		val session = root.session()
 		val qry = root.selectAll
 
