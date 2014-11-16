@@ -29,7 +29,9 @@ class TestRemoveRecursive {
 		AsyncJre.waitFor [cb |
 			NextwebExt.removeRecursive(root, node1, cb)
 		]
-
+		session.commit.get
+		
+		node1.selectAll().get().size() => 0
 		
 		session.close.get
 		server.shutdown.get

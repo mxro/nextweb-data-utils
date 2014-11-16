@@ -6,6 +6,8 @@ import de.mxro.async.callbacks.ValueCallback;
 import de.mxro.async.jre.AsyncJre;
 import de.mxro.fn.Success;
 import de.oehme.xtend.junit.JUnit;
+import io.nextweb.ListQuery;
+import io.nextweb.NodeList;
 import io.nextweb.Query;
 import io.nextweb.Session;
 import io.nextweb.common.LocalServer;
@@ -43,6 +45,12 @@ public class TestRemoveRecursive {
       }
     };
     AsyncJre.<Success>waitFor(_function);
+    NextwebPromise<Success> _commit_1 = session.commit();
+    _commit_1.get();
+    ListQuery _selectAll = node1.selectAll();
+    NodeList _get = _selectAll.get();
+    int _size = _get.size();
+    TestRemoveRecursive.<Integer, Integer>operator_doubleArrow(Integer.valueOf(_size), Integer.valueOf(0));
     NextwebPromise<Success> _close = session.close();
     _close.get();
     NextwebPromise<Success> _shutdown = server.shutdown();
