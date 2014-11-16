@@ -30,7 +30,6 @@ public class NextwebExt {
   public static Object collectDirectChildren(final Link root, final ValueCallback<Tree<Link>> cb) {
     throw new Error("Unresolved compilation problems:"
       + "\nThe method uri is undefined for the type NextwebExt"
-      + "\nAmbiguous feature call.\nThe methods\n\turi() in Link and\n\tgetUri() in Link\nboth match."
       + "\nType mismatch: cannot convert from Tree<Link> to Link"
       + "\nType mismatch: cannot convert from ValueCallback<Link> to ValueCallback<Tree<Link>>"
       + "\nstartsWith cannot be resolved");

@@ -44,7 +44,7 @@ class NextwebExt {
 					val t = new Tree<Link>(session.link(root))
 					for (link : res) {
 
-						if (link.uri.startsWith(root.uri)) {
+						if (link.uri().startsWith(root.uri())) {
 
 							val childTree = t.add(link)
 							
