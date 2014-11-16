@@ -2,9 +2,7 @@ package io.nextweb.utils.data.tests
 
 import com.appjangle.jre.AppjangleJre
 import de.mxro.fn.Success
-import de.mxro.tree.Tree
 import de.oehme.xtend.junit.JUnit
-import io.nextweb.Link
 import io.nextweb.utils.data.NextwebDataExtension
 
 import static de.mxro.async.jre.AsyncJre.*
@@ -32,17 +30,21 @@ class TestRemoveRecursive {
 		
 		session.commit.get
 		
-		
-		
+
 		waitFor [cb |
 			root.removeSafeRecursive( node1, cb.embed [qries |
 				(qries.size > 0) => true
-			]
+				
+				session.commit.get
+				
+				cb.onSuccess(Success.INSTANCE)
+				
+			])
 			
 			
 			
 		]
-		session.commit.get
+		
 		
 		node1.selectAll().get().size() => 0
 		
