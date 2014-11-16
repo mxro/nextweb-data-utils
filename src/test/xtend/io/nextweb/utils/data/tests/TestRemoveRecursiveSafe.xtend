@@ -10,7 +10,7 @@ import static de.mxro.async.jre.AsyncJre.*
 import static extension de.mxro.async.Async.embed
 
 @JUnit
-class TestRemoveRecursive {
+class TestRemoveRecursiveSafe {
 	
 	def test() {
 		
@@ -40,7 +40,6 @@ class TestRemoveRecursive {
 				cb.onSuccess(Success.INSTANCE)
 				
 			])
-			
 			
 			
 		]
