@@ -34,6 +34,14 @@ class NextwebExt {
 
 	def private static <T> traverse(Tree<T> tree, Closure2<T, T> operation) {
 		
+		for (node: tree) {
+			
+			traverse(node, operation)
+			
+			operation.apply(tree.root, node.root)
+			
+		}
+		
 	}
 
 	/**
