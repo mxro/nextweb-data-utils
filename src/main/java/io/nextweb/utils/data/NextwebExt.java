@@ -33,6 +33,7 @@ public class NextwebExt {
           }
         };
         NextwebExt.<Link>traverse(tree, _function);
+        cb.onSuccess(Success.INSTANCE);
       }
     };
     ValueCallback<Tree<Link>> _embed = Async.<Tree<Link>>embed(cb, _function);

@@ -27,6 +27,8 @@ class NextwebExt {
 				parent.remove(node)
 			])
 			
+			cb.onSuccess(Success.INSTANCE)
+			
 		])		
 	}
 
