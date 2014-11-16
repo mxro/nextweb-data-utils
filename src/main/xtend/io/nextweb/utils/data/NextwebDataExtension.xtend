@@ -95,11 +95,11 @@ class NextwebDataExtension {
 					val t = new Tree<Link>(session.link(root))
 					for (Tree<Link> childTree : res) {
 
-						if (childTree.value.uri().startsWith(root.uri())) {
+						//if (childTree.value.uri().startsWith(root.uri())) {
 
 							t.add(childTree)
 
-						}
+						//}
 
 					}
 					cb.onSuccess(t)

@@ -141,13 +141,7 @@ public class NextwebDataExtension {
             Link _link = session.link(root);
             final Tree<Link> t = new Tree<Link>(_link);
             for (final Tree<Link> childTree : res) {
-              Link _value = childTree.value();
-              String _uri = _value.uri();
-              String _uri_1 = root.uri();
-              boolean _startsWith = _uri.startsWith(_uri_1);
-              if (_startsWith) {
-                t.add(childTree);
-              }
+              t.add(childTree);
             }
             cb.onSuccess(t);
           }
