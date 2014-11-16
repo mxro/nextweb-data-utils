@@ -37,7 +37,7 @@ class TestRemoveRecursive {
 		waitFor [cb |
 			
 			root.collectDirectChildren(cb.embed [Tree<Link> tree |
-				println(tree.toList)
+				
 				cb.onSuccess(Success.INSTANCE)
 			])
 			

@@ -18,9 +18,7 @@ import io.nextweb.Session;
 import io.nextweb.common.LocalServer;
 import io.nextweb.promise.NextwebPromise;
 import io.nextweb.utils.data.NextwebDataExtension;
-import java.util.List;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure0;
 import org.hamcrest.Matcher;
 import org.junit.Assert;
@@ -50,8 +48,6 @@ public class TestRemoveRecursive {
       public void get(final ValueCallback<Object> cb) {
         final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
           public void apply(final Tree<Link> tree) {
-            List<Tree<Link>> _list = TestRemoveRecursive.this.tree.<Link>toList(tree);
-            InputOutput.<List<Tree<Link>>>println(_list);
             cb.onSuccess(Success.INSTANCE);
           }
         };
