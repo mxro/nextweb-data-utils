@@ -12,6 +12,8 @@ class TestRemoveRecursive {
 		val session = AppjangleJre.createSession(server)
 		
 		
+		val root = session.seed(server)
+		val node1 = root.append("node1", "./node1")
 		
 		
 		session.close.get

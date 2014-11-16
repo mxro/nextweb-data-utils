@@ -3,6 +3,7 @@ package io.nextweb.utils.data.tests;
 import com.appjangle.jre.AppjangleJre;
 import de.mxro.fn.Success;
 import de.oehme.xtend.junit.JUnit;
+import io.nextweb.Query;
 import io.nextweb.Session;
 import io.nextweb.common.LocalServer;
 import io.nextweb.promise.NextwebPromise;
@@ -19,6 +20,8 @@ public class TestRemoveRecursive {
   public void tes() {
     final LocalServer server = AppjangleJre.startServer();
     final Session session = AppjangleJre.createSession(server);
+    final Query root = session.seed(server);
+    final Query node1 = root.append("node1", "./node1");
     NextwebPromise<Success> _close = session.close();
     _close.get();
     NextwebPromise<Success> _shutdown = server.shutdown();
