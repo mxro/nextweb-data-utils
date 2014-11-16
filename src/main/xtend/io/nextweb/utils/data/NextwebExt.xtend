@@ -37,8 +37,8 @@ class NextwebExt {
 		qry.get [ children |
 
 			Async.forEach(children.nodes(),
-				[ e, itmcb |
-					collectDirectChildren(session.link(e), itmcb)
+				[ e, ValueCallback<Tree<Link>> itmcb |
+					collectDirectChildrenInt(session.link(e), itmcb)
 				],
 				cb.embed [ res |
 					val t = new Tree<Link>(session.link(root))
