@@ -1,9 +1,11 @@
 package io.nextweb.utils.data.tests
 
 import com.appjangle.jre.AppjangleJre
-import de.mxro.async.jre.AsyncJre
+import de.mxro.tree.TreeExtension
 import de.oehme.xtend.junit.JUnit
 import io.nextweb.utils.data.NextwebDataExtension
+
+import static de.mxro.async.jre.AsyncJre.*
 
 @JUnit
 class TestRemoveRecursive {
@@ -26,7 +28,12 @@ class TestRemoveRecursive {
 		
 		session.commit.get
 		
-		AsyncJre.waitFor [cb |
+		
+		waitFor [cb |
+			
+		]
+		
+		waitFor [cb |
 			root.removeRecursive( node1, cb)
 		]
 		session.commit.get
@@ -39,5 +46,6 @@ class TestRemoveRecursive {
 	}
 	
 	extension NextwebDataExtension ext = new NextwebDataExtension
+	extension TreeExtension tree = new TreeExtension
 	
 }

@@ -48,7 +48,7 @@ public class NextwebDataExtension {
       }
     };
     ValueCallback<Tree<Link>> _embed = Async.<Tree<Link>>embed(cb, _function);
-    NextwebDataExtension.collectDirectChildren(entity, _embed);
+    this.collectDirectChildren(entity, _embed);
   }
   
   public void removeSaveRecursive(final Entity from, final Entity entity, final ValueCallback<List<NextwebPromise<Success>>> cb) {
@@ -67,22 +67,22 @@ public class NextwebDataExtension {
       }
     };
     ValueCallback<Tree<Link>> _embed = Async.<Tree<Link>>embed(cb, _function);
-    NextwebDataExtension.collectDirectChildren(entity, _embed);
+    this.collectDirectChildren(entity, _embed);
   }
   
   /**
    * Determines all <b>direct</b> children of a node.
    */
-  public static void collectDirectChildren(final Entity of, final ValueCallback<Tree<Link>> cb) {
+  public void collectDirectChildren(final Entity of, final ValueCallback<Tree<Link>> cb) {
     if ((of instanceof Link)) {
       final Link link = ((Link)of);
-      NextwebDataExtension.collectDirectChildren(link, cb);
+      this.collectDirectChildren(link, cb);
       return;
     }
     if ((of instanceof Node)) {
       Session _session = ((Node)of).session();
       final Link link_1 = _session.link(((Node) of));
-      NextwebDataExtension.collectDirectChildren(link_1, cb);
+      this.collectDirectChildren(link_1, cb);
       return;
     }
     if ((of instanceof Query)) {
@@ -98,7 +98,7 @@ public class NextwebDataExtension {
         public void apply(final Node node) {
           Session _session = node.session();
           Link _link = _session.link(node);
-          NextwebDataExtension.collectDirectChildren(_link, cb);
+          NextwebDataExtension.this.collectDirectChildren(_link, cb);
         }
       };
       query.get(_function_1);
@@ -108,7 +108,7 @@ public class NextwebDataExtension {
   /**
    * Determines all <b>direct</b> children of a node.
    */
-  public static void collectDirectChildren(final Link root, final ValueCallback<Tree<Link>> cb) {
+  public void collectDirectChildren(final Link root, final ValueCallback<Tree<Link>> cb) {
     final Session session = root.session();
     final ListQuery qry = root.selectAll();
     final ExceptionListener _function = new ExceptionListener() {
@@ -124,7 +124,7 @@ public class NextwebDataExtension {
         final Closure2<Node, ValueCallback<Tree<Link>>> _function = new Closure2<Node, ValueCallback<Tree<Link>>>() {
           public void apply(final Node e, final ValueCallback<Tree<Link>> itmcb) {
             Link _link = session.link(e);
-            NextwebDataExtension.collectDirectChildren(_link, itmcb);
+            NextwebDataExtension.this.collectDirectChildren(_link, itmcb);
           }
         };
         final Closure<List<Tree<Link>>> _function_1 = new Closure<List<Tree<Link>>>() {

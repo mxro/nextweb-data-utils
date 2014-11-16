@@ -5,6 +5,7 @@ import de.mxro.async.Deferred;
 import de.mxro.async.callbacks.ValueCallback;
 import de.mxro.async.jre.AsyncJre;
 import de.mxro.fn.Success;
+import de.mxro.tree.TreeExtension;
 import de.oehme.xtend.junit.JUnit;
 import io.nextweb.ListQuery;
 import io.nextweb.NodeList;
@@ -39,12 +40,17 @@ public class TestRemoveRecursive {
     child3.append("c");
     NextwebPromise<Success> _commit = session.commit();
     _commit.get();
-    final Deferred<Success> _function = new Deferred<Success>() {
+    final Deferred<Object> _function = new Deferred<Object>() {
+      public void get(final ValueCallback<Object> cb) {
+      }
+    };
+    AsyncJre.<Object>waitFor(_function);
+    final Deferred<Success> _function_1 = new Deferred<Success>() {
       public void get(final ValueCallback<Success> cb) {
         TestRemoveRecursive.this.ext.removeRecursive(root, node1, cb);
       }
     };
-    AsyncJre.<Success>waitFor(_function);
+    AsyncJre.<Success>waitFor(_function_1);
     NextwebPromise<Success> _commit_1 = session.commit();
     _commit_1.get();
     ListQuery _selectAll = node1.selectAll();
@@ -59,6 +65,9 @@ public class TestRemoveRecursive {
   
   @Extension
   private NextwebDataExtension ext = new NextwebDataExtension();
+  
+  @Extension
+  private TreeExtension tree = new TreeExtension();
   
   private static void assertArrayEquals(final Object[] expecteds, final Object[] actuals) {
     Assert.assertArrayEquals(expecteds, actuals);
