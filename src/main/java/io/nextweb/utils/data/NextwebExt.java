@@ -29,9 +29,7 @@ public class NextwebExt {
    */
   public static void removeRecursive(final Entity from, final Entity entity, final ValueCallback<Success> cb) {
     throw new Error("Unresolved compilation problems:"
-      + "\nThe method traverse is undefined for the type NextwebExt"
-      + "\nThe method remove is undefined for the type NextwebExt"
-      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context.");
+      + "\nCannot make an implicit static reference to the non-static extension traverse");
   }
   
   public static void removeSaveRecursive(final Entity from, final Entity entity, final ValueCallback<List<NextwebPromise<Success>>> cb) {
