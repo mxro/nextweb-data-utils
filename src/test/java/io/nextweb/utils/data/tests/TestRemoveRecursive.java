@@ -8,7 +8,6 @@ import de.mxro.async.jre.AsyncJre;
 import de.mxro.fn.Closure;
 import de.mxro.fn.Success;
 import de.mxro.tree.Tree;
-import de.mxro.tree.TreeExtension;
 import de.oehme.xtend.junit.JUnit;
 import io.nextweb.Link;
 import io.nextweb.ListQuery;
@@ -76,9 +75,6 @@ public class TestRemoveRecursive {
   
   @Extension
   private NextwebDataExtension ext = new NextwebDataExtension();
-  
-  @Extension
-  private TreeExtension tree = new TreeExtension();
   
   private static void assertArrayEquals(final Object[] expecteds, final Object[] actuals) {
     Assert.assertArrayEquals(expecteds, actuals);

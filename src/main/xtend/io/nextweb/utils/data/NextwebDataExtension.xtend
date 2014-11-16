@@ -28,9 +28,7 @@ class NextwebDataExtension {
 				for (childNode : tree.toList) {
 					val it = childNode
 					if (hasParent) {
-
 						parent.value.remove(value)
-
 					}
 				}
 				cb.onSuccess(Success.INSTANCE)

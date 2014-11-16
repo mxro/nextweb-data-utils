@@ -3,7 +3,6 @@ package io.nextweb.utils.data.tests
 import com.appjangle.jre.AppjangleJre
 import de.mxro.fn.Success
 import de.mxro.tree.Tree
-import de.mxro.tree.TreeExtension
 import de.oehme.xtend.junit.JUnit
 import io.nextweb.Link
 import io.nextweb.utils.data.NextwebDataExtension
@@ -56,6 +55,6 @@ class TestRemoveRecursive {
 	}
 	
 	extension NextwebDataExtension ext = new NextwebDataExtension
-	extension TreeExtension tree = new TreeExtension
+	// extension TreeExtension tree = new TreeExtension
 	
 }
