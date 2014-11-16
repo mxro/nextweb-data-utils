@@ -45,7 +45,7 @@ class NextwebExt {
 	}
 
 	def private static <T> void traverse(Tree<T> tree, Closure2<T, T> operation) {
-		
+
 		for (node: tree) {
 			
 			traverse(node, operation)
@@ -55,6 +55,8 @@ class NextwebExt {
 		}
 		
 	}
+	
+	
 
 	/**
 	 * Determines all <b>direct</b> children of a node.
