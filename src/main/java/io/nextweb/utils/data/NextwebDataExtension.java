@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 
 @SuppressWarnings("all")
 public class NextwebDataExtension {
@@ -30,13 +31,34 @@ public class NextwebDataExtension {
    * <p>Callback is called when all operations are defined, NOT executed.
    */
   public void removeRecursive(final Entity from, final Entity entity, final ValueCallback<Success> cb) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field hasParent is undefined for the type NextwebDataExtension"
-      + "\nThe method or field parent is undefined for the type NextwebDataExtension"
-      + "\nThe method or field value is undefined for the type NextwebDataExtension"
-      + "\nInvalid number of arguments. The method toList(Tree<T>) is not applicable for the arguments (Tree<Link>,ValueCallback<Object>)"
-      + "\nvalue cannot be resolved"
-      + "\nremove cannot be resolved");
+    final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
+      public void apply(final Tree<Link> tree) {
+        List<Tree<Link>> _list = NextwebDataExtension.this.tree.<Link>toList(tree);
+        for (final Tree<Link> childNode : _list) {
+          {
+            final Tree<Link> it = childNode;
+            boolean _hasParent = it.hasParent();
+            if (_hasParent) {
+              Tree<Link> _parent = it.parent();
+              Link _value = _parent.value();
+              String _plus = ("from   " + _value);
+              InputOutput.<String>println(_plus);
+              Link _value_1 = it.value();
+              String _plus_1 = ("remove " + _value_1);
+              InputOutput.<String>println(_plus_1);
+              Tree<Link> _parent_1 = it.parent();
+              Link _value_2 = _parent_1.value();
+              Link _value_3 = it.value();
+              _value_2.remove(_value_3);
+              InputOutput.<String>println("dooonit");
+            }
+          }
+        }
+        cb.onSuccess(Success.INSTANCE);
+      }
+    };
+    ValueCallback<Tree<Link>> _embed = Async.<Tree<Link>>embed(cb, _function);
+    this.collectDirectChildren(entity, _embed);
   }
   
   public void removeSaveRecursive(final Entity from, final Entity entity, final ValueCallback<List<NextwebPromise<Success>>> cb) {
