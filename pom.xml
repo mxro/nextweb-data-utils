@@ -27,14 +27,19 @@
 	<!-- Dependent Modules -->
 	<dependencies>
 
-	
+
 
 		<dependency>
 			<groupId>com.appjangle.jreinternal</groupId>
 			<artifactId>appjangle-jre-internal</artifactId>
 			<version>[0.0.1,)</version>
 		</dependency>
-
+		<dependency>
+			<groupId>de.mxro.tree</groupId>
+			<artifactId>tree-api</artifactId>
+			<version>[0.0.1,)</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>com.github.oehme.xtend</groupId>
 			<artifactId>xtend-junit</artifactId>
@@ -56,7 +61,7 @@
 			<version>2.7.2</version>
 		</dependency>
 
-		
+
 
 
 		<dependency>
@@ -237,7 +242,7 @@
 
 	</build>
 
-<repositories>
+	<repositories>
 		<repository>
 			<id>Appjangle Releases</id>
 			<url>http://maven.appjangle.com/appjangle/releases</url>

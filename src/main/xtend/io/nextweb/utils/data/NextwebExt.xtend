@@ -9,8 +9,8 @@ import io.nextweb.Link
 import io.nextweb.Node
 import io.nextweb.Query
 import io.nextweb.promise.NextwebPromise
-import io.nextweb.utils.data.utils.Tree
 import java.util.List
+import nx.core.domain.Tree
 
 import static extension de.mxro.async.Async.embed
 
