@@ -116,10 +116,10 @@ public class NextwebDataExtension {
   /**
    * Determines all <b>direct</b> children of a node.
    */
-  public void collectDirectChildren(final Link root, final ValueCallback<Tree<Link>> cb) {
-    InputOutput.<String>println(("collect for " + root));
-    final Session session = root.session();
-    final ListQuery qry = root.selectAll();
+  public void collectDirectChildren(final Link node, final ValueCallback<Tree<Link>> cb) {
+    InputOutput.<String>println(("collect for " + node));
+    final Session session = node.session();
+    final ListQuery qry = node.selectAll();
     final ExceptionListener _function = new ExceptionListener() {
       public void onFailure(final ExceptionResult er) {
         Throwable _exception = er.exception();
@@ -138,12 +138,12 @@ public class NextwebDataExtension {
         };
         final Closure<List<Tree<Link>>> _function_1 = new Closure<List<Tree<Link>>>() {
           public void apply(final List<Tree<Link>> res) {
-            Link _link = session.link(root);
+            Link _link = session.link(node);
             final Tree<Link> t = new Tree<Link>(_link);
             for (final Tree<Link> childTree : res) {
               Link _value = childTree.value();
               String _uri = _value.uri();
-              String _uri_1 = root.uri();
+              String _uri_1 = node.uri();
               boolean _startsWith = _uri.startsWith(_uri_1);
               if (_startsWith) {
                 t.add(childTree);
