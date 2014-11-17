@@ -43,9 +43,10 @@ class NextwebDataExtension {
 				for (treeNode : tree.toList) {
 					val it = treeNode
 					if (hasParent) {
-						println('schedule '+parent.value+" "+value)
 						res.add(parent.value.removeSafe(value))
 
+					} else {
+						res.add(from.removeSafe(entity))
 					}
 				}
 				cb.onSuccess(res)
