@@ -29,7 +29,6 @@ class TestRemoveRecursiveSafe {
 		child3.append("c")
 		
 		session.commit.get
-		
 
 		waitFor [cb |
 			root.removeSafeRecursive( node1, cb.embed [qries |
