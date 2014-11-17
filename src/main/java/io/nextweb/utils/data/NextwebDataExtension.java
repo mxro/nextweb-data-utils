@@ -116,45 +116,51 @@ public class NextwebDataExtension {
    * Determines all <b>direct</b> children of a node.
    */
   public void collectDirectChildren(final Link root, final ValueCallback<Tree<Link>> cb) {
-    final Session session = root.session();
-    final ListQuery qry = root.selectAll();
-    final ExceptionListener _function = new ExceptionListener() {
-      public void onFailure(final ExceptionResult er) {
-        Throwable _exception = er.exception();
-        cb.onFailure(_exception);
-      }
-    };
-    qry.catchExceptions(_function);
-    final Closure<NodeList> _function_1 = new Closure<NodeList>() {
-      public void apply(final NodeList children) {
-        List<Node> _nodes = children.nodes();
-        final Closure2<Node, ValueCallback<Tree<Link>>> _function = new Closure2<Node, ValueCallback<Tree<Link>>>() {
-          public void apply(final Node e, final ValueCallback<Tree<Link>> itmcb) {
-            Link _link = session.link(e);
-            NextwebDataExtension.this.collectDirectChildren(_link, itmcb);
+    Query _shield = root.shield();
+    final Closure<Node> _function = new Closure<Node>() {
+      public void apply(final Node it) {
+        final Session session = root.session();
+        final ListQuery qry = root.selectAll();
+        final ExceptionListener _function = new ExceptionListener() {
+          public void onFailure(final ExceptionResult er) {
+            Throwable _exception = er.exception();
+            cb.onFailure(_exception);
           }
         };
-        final Closure<List<Tree<Link>>> _function_1 = new Closure<List<Tree<Link>>>() {
-          public void apply(final List<Tree<Link>> res) {
-            Link _link = session.link(root);
-            final Tree<Link> t = new Tree<Link>(_link);
-            for (final Tree<Link> childTree : res) {
-              Link _value = childTree.value();
-              String _uri = _value.uri();
-              String _uri_1 = root.uri();
-              boolean _startsWith = _uri.startsWith(_uri_1);
-              if (_startsWith) {
-                t.add(childTree);
+        qry.catchExceptions(_function);
+        final Closure<NodeList> _function_1 = new Closure<NodeList>() {
+          public void apply(final NodeList children) {
+            List<Node> _nodes = children.nodes();
+            final Closure2<Node, ValueCallback<Tree<Link>>> _function = new Closure2<Node, ValueCallback<Tree<Link>>>() {
+              public void apply(final Node e, final ValueCallback<Tree<Link>> itmcb) {
+                Link _link = session.link(e);
+                NextwebDataExtension.this.collectDirectChildren(_link, itmcb);
               }
-            }
-            cb.onSuccess(t);
+            };
+            final Closure<List<Tree<Link>>> _function_1 = new Closure<List<Tree<Link>>>() {
+              public void apply(final List<Tree<Link>> res) {
+                Link _link = session.link(root);
+                final Tree<Link> t = new Tree<Link>(_link);
+                for (final Tree<Link> childTree : res) {
+                  Link _value = childTree.value();
+                  String _uri = _value.uri();
+                  String _uri_1 = root.uri();
+                  boolean _startsWith = _uri.startsWith(_uri_1);
+                  if (_startsWith) {
+                    t.add(childTree);
+                  }
+                }
+                cb.onSuccess(t);
+              }
+            };
+            ValueCallback<List<Tree<Link>>> _embed = Async.<List<Tree<Link>>>embed(cb, _function_1);
+            Async.<Node, Tree<Link>>forEach(_nodes, _function, _embed);
           }
         };
-        ValueCallback<List<Tree<Link>>> _embed = Async.<List<Tree<Link>>>embed(cb, _function_1);
-        Async.<Node, Tree<Link>>forEach(_nodes, _function, _embed);
+        qry.get(_function_1);
       }
     };
-    qry.get(_function_1);
+    _shield.get(_function);
   }
   
   @Extension
