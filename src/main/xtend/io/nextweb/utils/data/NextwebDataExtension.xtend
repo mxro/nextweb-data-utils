@@ -92,10 +92,7 @@ class NextwebDataExtension {
 		val session = node.session()
 		val t = new Tree<Link>(session.link(node))
 
-		println('adding '+node)
-
 		if (!node.uri().startsWith(root.uri())) {
-			println('skip')
 			cb.onSuccess(t)
 			return;
 		}
