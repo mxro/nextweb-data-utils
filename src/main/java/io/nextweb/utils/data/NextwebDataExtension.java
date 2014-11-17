@@ -81,8 +81,6 @@ public class NextwebDataExtension {
    * Determines all <b>direct</b> children of a node.
    */
   public void collectDirectChildren(final Entity of, final ValueCallback<Tree<Link>> cb) {
-    Exception _exception = new Exception("triggered by");
-    _exception.printStackTrace();
     if ((of instanceof Link)) {
       final Link link = ((Link)of);
       this.collectDirectChildren(link, cb);

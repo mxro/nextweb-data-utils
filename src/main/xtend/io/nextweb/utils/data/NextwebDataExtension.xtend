@@ -57,7 +57,7 @@ class NextwebDataExtension {
 	 */
 	def void collectDirectChildren(Entity of, ValueCallback<Tree<Link>> cb) {
 		
-		new Exception('triggered by').printStackTrace
+		
 		if (of instanceof Link) {
 			val link = of
 			collectDirectChildren(link, cb)
