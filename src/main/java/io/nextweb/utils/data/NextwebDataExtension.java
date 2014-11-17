@@ -133,6 +133,7 @@ public class NextwebDataExtension {
     boolean _startsWith = _uri.startsWith(_uri_1);
     boolean _not = (!_startsWith);
     if (_not) {
+      InputOutput.<String>println("skip");
       cb.onSuccess(t);
       return;
     }
@@ -150,7 +151,7 @@ public class NextwebDataExtension {
         final Closure2<Node, ValueCallback<Tree<Link>>> _function = new Closure2<Node, ValueCallback<Tree<Link>>>() {
           public void apply(final Node e, final ValueCallback<Tree<Link>> itmcb) {
             Link _link = session.link(e);
-            NextwebDataExtension.this.collectDirectChildren(_link, itmcb);
+            NextwebDataExtension.this.collectDirectChildrenInt(root, _link, itmcb);
           }
         };
         final Closure<List<Tree<Link>>> _function_1 = new Closure<List<Tree<Link>>>() {

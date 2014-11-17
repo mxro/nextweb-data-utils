@@ -95,6 +95,7 @@ class NextwebDataExtension {
 		println('adding '+node)
 
 		if (!node.uri().startsWith(root.uri())) {
+			println('skip')
 			cb.onSuccess(t)
 			return;
 		}
@@ -106,7 +107,7 @@ class NextwebDataExtension {
 		qry.get [ children |
 			Async.forEach(children.nodes(),
 				[ e, ValueCallback<Tree<Link>> itmcb |
-					collectDirectChildren(session.link(e), itmcb)
+					collectDirectChildrenInt(root, session.link(e), itmcb)
 				],
 				cb.embed [ res |
 					for (Tree<Link> childTree : res) {
