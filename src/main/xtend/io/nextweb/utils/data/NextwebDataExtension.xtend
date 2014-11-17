@@ -83,7 +83,7 @@ class NextwebDataExtension {
 	 * Determines all <b>direct</b> children of a node.
 	 */
 	def void collectDirectChildren(Link root, ValueCallback<Tree<Link>> cb) {
-
+		println('collect for '+root)
 		val session = root.session()
 		
 		val qry = root.selectAll

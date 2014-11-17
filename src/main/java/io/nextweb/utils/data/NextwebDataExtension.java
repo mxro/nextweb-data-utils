@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 
 @SuppressWarnings("all")
 public class NextwebDataExtension {
@@ -116,6 +117,7 @@ public class NextwebDataExtension {
    * Determines all <b>direct</b> children of a node.
    */
   public void collectDirectChildren(final Link root, final ValueCallback<Tree<Link>> cb) {
+    InputOutput.<String>println(("collect for " + root));
     final Session session = root.session();
     final ListQuery qry = root.selectAll();
     final ExceptionListener _function = new ExceptionListener() {
