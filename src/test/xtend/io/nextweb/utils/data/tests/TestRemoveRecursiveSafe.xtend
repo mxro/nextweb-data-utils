@@ -35,13 +35,15 @@ class TestRemoveRecursiveSafe {
 			root.removeSafeRecursive( node1, cb.embed [qries |
 				(qries.size > 0) => true
 				
-				session.commit.get
+				
 				
 				cb.onSuccess(Success.INSTANCE)
 				
 			])
 
 		]
+		
+		session.commit.get
 		
 		
 		node1.selectAll().get().size() => 0

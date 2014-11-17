@@ -49,8 +49,6 @@ public class TestRemoveRecursiveSafe {
             int _size = qries.size();
             boolean _greaterThan = (_size > 0);
             TestRemoveRecursiveSafe.<Boolean, Boolean>operator_doubleArrow(Boolean.valueOf(_greaterThan), Boolean.valueOf(true));
-            NextwebPromise<Success> _commit = session.commit();
-            _commit.get();
             cb.onSuccess(Success.INSTANCE);
           }
         };
@@ -59,6 +57,8 @@ public class TestRemoveRecursiveSafe {
       }
     };
     AsyncJre.<Object>waitFor(_function);
+    NextwebPromise<Success> _commit_1 = session.commit();
+    _commit_1.get();
     ListQuery _selectAll = node1.selectAll();
     NodeList _get = _selectAll.get();
     int _size = _get.size();
