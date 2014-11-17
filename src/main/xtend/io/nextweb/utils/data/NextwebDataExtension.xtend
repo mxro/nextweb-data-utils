@@ -44,7 +44,7 @@ class NextwebDataExtension {
 					val it = treeNode
 					if (hasParent) {
 						res.add(parent.value.removeSafe(value))
-						
+
 					}
 				}
 				cb.onSuccess(res)
@@ -56,8 +56,7 @@ class NextwebDataExtension {
 	 * Determines all <b>direct</b> children of a node.
 	 */
 	def void collectDirectChildren(Entity of, ValueCallback<Tree<Link>> cb) {
-		
-		
+
 		if (of instanceof Link) {
 			val link = of
 			collectDirectChildren(link, cb)
@@ -92,14 +91,14 @@ class NextwebDataExtension {
 	def void collectDirectChildrenInt(Link root, Link node, ValueCallback<Tree<Link>> cb) {
 		val session = node.session()
 		val t = new Tree<Link>(session.link(node))
-		
+
+		println('adding '+node)
+
 		if (!node.uri().startsWith(root.uri())) {
 			cb.onSuccess(t)
 			return;
-		}	
-		
-		
-		
+		}
+
 		val qry = node.selectAll
 
 		qry.catchExceptions[er|cb.onFailure(er.exception)]
@@ -110,21 +109,14 @@ class NextwebDataExtension {
 					collectDirectChildren(session.link(e), itmcb)
 				],
 				cb.embed [ res |
-					
 					for (Tree<Link> childTree : res) {
 
-						
-
-							t.add(childTree)
-
-						
+						t.add(childTree)
 
 					}
 					cb.onSuccess(t)
 				])
 		]
-		
-		
 
 	}
 

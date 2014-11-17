@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 
 @SuppressWarnings("all")
 public class NextwebDataExtension {
@@ -126,6 +127,7 @@ public class NextwebDataExtension {
     final Session session = node.session();
     Link _link = session.link(node);
     final Tree<Link> t = new Tree<Link>(_link);
+    InputOutput.<String>println(("adding " + node));
     String _uri = node.uri();
     String _uri_1 = root.uri();
     boolean _startsWith = _uri.startsWith(_uri_1);
