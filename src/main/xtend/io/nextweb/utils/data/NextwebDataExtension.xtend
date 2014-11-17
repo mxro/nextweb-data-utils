@@ -82,6 +82,7 @@ class NextwebDataExtension {
 	 */
 	def void collectDirectChildren(Link root, ValueCallback<Tree<Link>> cb) {
 		val session = root.session()
+		
 		val qry = root.selectAll
 
 		qry.catchExceptions[er|cb.onFailure(er.exception)]
