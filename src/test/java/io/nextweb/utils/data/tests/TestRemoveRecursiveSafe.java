@@ -49,6 +49,13 @@ public class TestRemoveRecursiveSafe {
             int _size = qries.size();
             boolean _greaterThan = (_size > 0);
             TestRemoveRecursiveSafe.<Boolean, Boolean>operator_doubleArrow(Boolean.valueOf(_greaterThan), Boolean.valueOf(true));
+            for (final NextwebPromise<Success> qry : qries) {
+              final Closure<Success> _function = new Closure<Success>() {
+                public void apply(final Success it) {
+                }
+              };
+              qry.get(_function);
+            }
             cb.onSuccess(Success.INSTANCE);
           }
         };

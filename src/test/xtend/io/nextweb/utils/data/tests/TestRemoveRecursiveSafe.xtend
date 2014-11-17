@@ -34,7 +34,9 @@ class TestRemoveRecursiveSafe {
 			root.removeSafeRecursive( node1, cb.embed [qries |
 				(qries.size > 0) => true
 				
-				
+				for (qry : qries) {
+					qry.get []
+				}
 				
 				cb.onSuccess(Success.INSTANCE)
 				
