@@ -56,6 +56,8 @@ class NextwebDataExtension {
 	 * Determines all <b>direct</b> children of a node.
 	 */
 	def void collectDirectChildren(Entity of, ValueCallback<Tree<Link>> cb) {
+		
+		new Exception('triggered by').printStackTrace
 		if (of instanceof Link) {
 			val link = of
 			collectDirectChildren(link, cb)
