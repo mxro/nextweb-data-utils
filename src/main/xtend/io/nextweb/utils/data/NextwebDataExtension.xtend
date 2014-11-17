@@ -46,8 +46,8 @@ class NextwebDataExtension {
 						res.add(parent.value.removeSafe(value))
 					}
 				}
-
-		cb.onSuccess(res)])
+				cb.onSuccess(res)
+			])
 
 	}
 
@@ -110,4 +110,3 @@ class NextwebDataExtension {
 	extension TreeExtension tree = new TreeExtension
 
 }
-		
