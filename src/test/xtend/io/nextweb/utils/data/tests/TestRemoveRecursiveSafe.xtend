@@ -40,8 +40,7 @@ class TestRemoveRecursiveSafe {
 				cb.onSuccess(Success.INSTANCE)
 				
 			])
-			
-			
+
 		]
 		
 		

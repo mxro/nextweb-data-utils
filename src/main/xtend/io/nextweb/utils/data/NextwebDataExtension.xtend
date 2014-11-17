@@ -44,6 +44,7 @@ class NextwebDataExtension {
 					val it = treeNode
 					if (hasParent) {
 						res.add(parent.value.removeSafe(value))
+						
 					}
 				}
 				cb.onSuccess(res)
