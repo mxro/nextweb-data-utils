@@ -120,7 +120,13 @@ class NextwebDataExtension {
 
 	}
 
-	def void isDirectParent( Link node, Link parent) {
+	def getParentUri(Link node) {
+		return ""
+	}
+
+	def isDirectParent(Link node, Link parent) {
+		
+		node.parentUri.equals(parent.uri())
 		
 	}
 

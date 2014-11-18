@@ -169,7 +169,14 @@ public class NextwebDataExtension {
     qry.get(_function_1);
   }
   
-  public void isDirectParent(final Link node, final Link parent) {
+  public String getParentUri(final Link node) {
+    return "";
+  }
+  
+  public boolean isDirectParent(final Link node, final Link parent) {
+    String _parentUri = this.getParentUri(node);
+    String _uri = parent.uri();
+    return _parentUri.equals(_uri);
   }
   
   @Extension
