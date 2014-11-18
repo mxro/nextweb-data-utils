@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<groupId>io.nextweb.utils.data</groupId>
 	<artifactId>nextweb-data-utils</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<description>Utilities to work with Nextweb data.
 	</description>
 
@@ -271,9 +271,9 @@
 		</repository> </repositories> -->
 
 	<scm>
-		<connection>scm:git:git@github.com:mxro/FileSync.git</connection>
-		<url>https://github.com/mxro/FileSync</url>
-		<developerConnection>scm:git:git@github.com:mxro/FileSync.git
+		<connection>scm:git:git@github.com:mxro/nextweb-data-utils.git</connection>
+		<url>https://github.com/mxro/nextweb-data-utils</url>
+		<developerConnection>scm:git:git@github.com:mxro/nextweb-data-utils.git
 		</developerConnection>
 	</scm>
 
