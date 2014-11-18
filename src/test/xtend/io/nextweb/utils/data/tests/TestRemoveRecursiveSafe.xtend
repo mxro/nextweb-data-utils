@@ -8,11 +8,14 @@ import io.nextweb.utils.data.NextwebDataExtension
 import static de.mxro.async.jre.AsyncJre.*
 
 import static extension de.mxro.async.Async.embed
+import com.ononedb.nextweb.local.jre.OnedbStartServerCapabilityJre
 
 @JUnit
 class TestRemoveRecursiveSafe {
 	
 	def test() {
+		
+		new OnedbStartServerCapabilityJre()
 		val server = AppjangleJre.startServer
 		val session = AppjangleJre.createSession(server)
 		
