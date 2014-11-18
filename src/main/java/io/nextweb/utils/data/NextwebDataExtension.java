@@ -170,7 +170,14 @@ public class NextwebDataExtension {
   }
   
   public String getParentUri(final Link node) {
-    return "";
+    String _xblockexpression = null;
+    {
+      final String it = node.uri();
+      int _lastIndexOf = it.lastIndexOf("/");
+      int _minus = (_lastIndexOf - 1);
+      _xblockexpression = it.substring(0, _minus);
+    }
+    return _xblockexpression;
   }
   
   public boolean isDirectParent(final Link node, final Link parent) {
