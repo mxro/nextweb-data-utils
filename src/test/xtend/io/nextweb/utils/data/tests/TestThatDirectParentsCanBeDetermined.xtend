@@ -15,8 +15,10 @@ class TestThatDirectParentsCanBeDetermined {
 
 		val parent = session.link("http://slicnet.com/mxrogm/mxrogm/data/stream/2014/3/12/n4")
 		
+		println(node.parentUri)
 		
-		node.isDirectParent(parent) => true
+		
+		parent.hasDirectChild(node) => true
 	}
 
 	extension NextwebDataExtension dx = new NextwebDataExtension

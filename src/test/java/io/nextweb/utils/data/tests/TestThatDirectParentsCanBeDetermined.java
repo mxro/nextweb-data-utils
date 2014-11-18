@@ -1,8 +1,12 @@
 package io.nextweb.utils.data.tests;
 
 import de.oehme.xtend.junit.JUnit;
+import io.nextweb.Link;
+import io.nextweb.Session;
+import io.nextweb.jre.Nextweb;
 import io.nextweb.utils.data.NextwebDataExtension;
 import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure0;
 import org.hamcrest.Matcher;
 import org.junit.Assert;
@@ -14,9 +18,13 @@ import org.junit.internal.ArrayComparisonFailure;
 public class TestThatDirectParentsCanBeDetermined {
   @Test
   public void test() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method isDirectParent is undefined for the type TestThatDirectParentsCanBeDetermined"
-      + "\n=> cannot be resolved");
+    final Session session = Nextweb.createSession();
+    final Link node = session.link("http://slicnet.com/mxrogm/mxrogm/data/stream/2014/3/12/n4/Unnamed2");
+    final Link parent = session.link("http://slicnet.com/mxrogm/mxrogm/data/stream/2014/3/12/n4");
+    String _parentUri = this.dx.getParentUri(node);
+    InputOutput.<String>println(_parentUri);
+    boolean _hasDirectChild = this.dx.hasDirectChild(parent, node);
+    TestThatDirectParentsCanBeDetermined.<Boolean, Boolean>operator_doubleArrow(Boolean.valueOf(_hasDirectChild), Boolean.valueOf(true));
   }
   
   @Extension
