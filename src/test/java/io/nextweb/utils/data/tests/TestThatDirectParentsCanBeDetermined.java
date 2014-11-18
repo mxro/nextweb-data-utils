@@ -19,11 +19,14 @@ public class TestThatDirectParentsCanBeDetermined {
   public void test() {
     final Session session = Nextweb.createSession();
     final Link directChild = session.link("http://slicnet.com/mxrogm/mxrogm/data/stream/2014/3/12/n4/Unnamed2");
+    final Link indirectChild = session.link("http://slicnet.com/mxrogm/mxrogm/data/stream/2014/3/12/n4/Unnamed15/Unnamed2");
     final Link parent = session.link("http://slicnet.com/mxrogm/mxrogm/data/stream/2014/3/12/n4");
     boolean _hasDirectChild = this.dx.hasDirectChild(parent, directChild);
     TestThatDirectParentsCanBeDetermined.<Boolean, Boolean>operator_doubleArrow(Boolean.valueOf(_hasDirectChild), Boolean.valueOf(true));
     boolean _hasDirectChild_1 = this.dx.hasDirectChild(directChild, parent);
     TestThatDirectParentsCanBeDetermined.<Boolean, Boolean>operator_doubleArrow(Boolean.valueOf(_hasDirectChild_1), Boolean.valueOf(false));
+    boolean _hasDirectChild_2 = this.dx.hasDirectChild(parent, indirectChild);
+    TestThatDirectParentsCanBeDetermined.<Boolean, Boolean>operator_doubleArrow(Boolean.valueOf(_hasDirectChild_2), Boolean.valueOf(false));
   }
   
   @Extension
