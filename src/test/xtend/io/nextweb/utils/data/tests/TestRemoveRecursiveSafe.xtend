@@ -15,6 +15,8 @@ class TestRemoveRecursiveSafe {
 	
 	def test() {
 		
+		
+		Class.forName("com.ononedb.nextweb.local.jre.OnedbStartServerCapabilityJre");
 		new OnedbStartServerCapabilityJre()
 		val server = AppjangleJre.startServer
 		val session = AppjangleJre.createSession(server)
