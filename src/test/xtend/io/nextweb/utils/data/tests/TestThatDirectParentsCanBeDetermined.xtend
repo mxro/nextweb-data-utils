@@ -3,7 +3,6 @@ package io.nextweb.utils.data.tests
 import de.oehme.xtend.junit.JUnit
 import io.nextweb.jre.Nextweb
 import io.nextweb.utils.data.NextwebDataExtension
-import nx.common.index.NxIndex
 
 @JUnit
 class TestThatDirectParentsCanBeDetermined {
