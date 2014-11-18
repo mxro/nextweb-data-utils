@@ -30,26 +30,8 @@ public class NextwebDataExtension {
    * <p>Callback is called when all operations are defined, NOT executed.
    */
   public void removeRecursive(final Entity from, final Entity entity, final ValueCallback<Success> cb) {
-    final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
-      public void apply(final Tree<Link> tree) {
-        List<Tree<Link>> _list = NextwebDataExtension.this.tree.<Link>toList(tree);
-        for (final Tree<Link> childNode : _list) {
-          {
-            final Tree<Link> it = childNode;
-            boolean _hasParent = it.hasParent();
-            if (_hasParent) {
-              Tree<Link> _parent = it.parent();
-              Link _value = _parent.value();
-              Link _value_1 = it.value();
-              _value.remove(_value_1);
-            }
-          }
-        }
-        cb.onSuccess(Success.INSTANCE);
-      }
-    };
-    ValueCallback<Tree<Link>> _embed = Async.<Tree<Link>>embed(cb, _function);
-    this.collectDirectChildren(entity, _embed);
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method INSTANCE is undefined for the type NextwebDataExtension");
   }
   
   public void removeSafeRecursive(final Entity from, final Entity entity, final ValueCallback<List<NextwebPromise<Success>>> cb) {
