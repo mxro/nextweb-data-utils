@@ -174,8 +174,7 @@ public class NextwebDataExtension {
     {
       final String it = node.uri();
       int _lastIndexOf = it.lastIndexOf("/");
-      int _minus = (_lastIndexOf - 1);
-      _xblockexpression = it.substring(0, _minus);
+      _xblockexpression = it.substring(0, _lastIndexOf);
     }
     return _xblockexpression;
   }

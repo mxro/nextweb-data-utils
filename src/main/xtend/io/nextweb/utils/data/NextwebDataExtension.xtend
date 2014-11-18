@@ -122,7 +122,7 @@ class NextwebDataExtension {
 
 	def getParentUri(Link node) {
 		val it = node.uri()
-		substring(0, lastIndexOf("/")-1)
+		substring(0, lastIndexOf("/"))
 	}
 
 	def hasDirectChild(Link parent, Link node) {
