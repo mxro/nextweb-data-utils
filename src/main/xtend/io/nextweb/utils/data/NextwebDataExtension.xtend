@@ -120,6 +120,10 @@ class NextwebDataExtension {
 
 	}
 
+	def void isDirectParent( Link node, Link parent) {
+		
+	}
+
 	extension TreeExtension tree = new TreeExtension
 
 }

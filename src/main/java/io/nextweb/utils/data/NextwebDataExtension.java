@@ -169,6 +169,9 @@ public class NextwebDataExtension {
     qry.get(_function_1);
   }
   
+  public void isDirectParent(final Link node, final Link parent) {
+  }
+  
   @Extension
   private TreeExtension tree = new TreeExtension();
 }
