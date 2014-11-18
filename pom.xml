@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<groupId>io.nextweb.utils.data</groupId>
 	<artifactId>nextweb-data-utils</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 	<description>Utilities to work with Nextweb data.
 	</description>
 
@@ -27,10 +27,17 @@
 	<!-- Dependent Modules -->
 	<dependencies>
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.appjangle.jreinternal</groupId>
 			<artifactId>appjangle-jre-internal</artifactId>
 			<version>[0.0.1,)</version>
+		</dependency> -->
+		
+		
+		<dependency>
+			<groupId>com.appjangle.java</groupId>
+			<artifactId>appjangle-jre</artifactId>
+			<version>0.3.6</version>
 		</dependency>
 		
 		<dependency>
