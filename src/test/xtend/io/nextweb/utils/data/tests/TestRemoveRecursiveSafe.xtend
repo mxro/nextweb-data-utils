@@ -8,16 +8,12 @@ import io.nextweb.utils.data.NextwebDataExtension
 import static de.mxro.async.jre.AsyncJre.*
 
 import static extension de.mxro.async.Async.embed
-import com.ononedb.nextweb.local.jre.OnedbStartServerCapabilityJre
 
 @JUnit
 class TestRemoveRecursiveSafe {
 	
 	def test() {
-		
-		
-		Class.forName("com.ononedb.nextweb.local.jre.OnedbStartServerCapabilityJre");
-		new OnedbStartServerCapabilityJre()
+
 		val server = AppjangleJre.startServer
 		val session = AppjangleJre.createSession(server)
 		
@@ -33,6 +29,8 @@ class TestRemoveRecursiveSafe {
 		child3.append("c")
 		
 		session.commit.get
+
+		root.selectAll.get.values.contains("node1") => true
 
 		waitFor [cb |
 			root.removeSafeRecursive( node1, cb.embed [qries |
@@ -51,7 +49,7 @@ class TestRemoveRecursiveSafe {
 		session.commit.get
 		
 		
-		node1.selectAll().get().size() => 0
+		root.selectAll.get.values.contains("node1") => false
 		
 		session.close.get
 		server.shutdown.get

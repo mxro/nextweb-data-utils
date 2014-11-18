@@ -12,7 +12,7 @@ import static de.mxro.async.jre.AsyncJre.*
 import static extension de.mxro.async.Async.embed
 
 @JUnit
-class TestRemoveRecursiveSafe {
+class TestRemoveRecursive {
 	
 	def test() {
 		val server = AppjangleJre.startServer
