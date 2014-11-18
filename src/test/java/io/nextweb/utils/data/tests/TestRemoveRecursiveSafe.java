@@ -7,9 +7,7 @@ import de.mxro.async.callbacks.ValueCallback;
 import de.mxro.async.jre.AsyncJre;
 import de.mxro.fn.Closure;
 import de.mxro.fn.Success;
-import de.mxro.tree.Tree;
 import de.oehme.xtend.junit.JUnit;
-import io.nextweb.Link;
 import io.nextweb.ListQuery;
 import io.nextweb.NodeList;
 import io.nextweb.Query;
@@ -17,6 +15,7 @@ import io.nextweb.Session;
 import io.nextweb.common.LocalServer;
 import io.nextweb.promise.NextwebPromise;
 import io.nextweb.utils.data.NextwebDataExtension;
+import java.util.List;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure0;
 import org.hamcrest.Matcher;
@@ -45,22 +44,26 @@ public class TestRemoveRecursiveSafe {
     _commit.get();
     final Deferred<Object> _function = new Deferred<Object>() {
       public void get(final ValueCallback<Object> cb) {
-        final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
-          public void apply(final Tree<Link> tree) {
+        final Closure<List<NextwebPromise<Success>>> _function = new Closure<List<NextwebPromise<Success>>>() {
+          public void apply(final List<NextwebPromise<Success>> qries) {
+            int _size = qries.size();
+            boolean _greaterThan = (_size > 0);
+            TestRemoveRecursiveSafe.<Boolean, Boolean>operator_doubleArrow(Boolean.valueOf(_greaterThan), Boolean.valueOf(true));
+            for (final NextwebPromise<Success> qry : qries) {
+              final Closure<Success> _function = new Closure<Success>() {
+                public void apply(final Success it) {
+                }
+              };
+              qry.get(_function);
+            }
             cb.onSuccess(Success.INSTANCE);
           }
         };
-        ValueCallback<Tree<Link>> _embed = Async.<Tree<Link>>embed(cb, _function);
-        TestRemoveRecursiveSafe.this.ext.collectDirectChildren(root, _embed);
+        ValueCallback<List<NextwebPromise<Success>>> _embed = Async.<List<NextwebPromise<Success>>>embed(cb, _function);
+        TestRemoveRecursiveSafe.this.ext.removeSafeRecursive(root, node1, _embed);
       }
     };
     AsyncJre.<Object>waitFor(_function);
-    final Deferred<Success> _function_1 = new Deferred<Success>() {
-      public void get(final ValueCallback<Success> cb) {
-        TestRemoveRecursiveSafe.this.ext.removeRecursive(root, node1, cb);
-      }
-    };
-    AsyncJre.<Success>waitFor(_function_1);
     NextwebPromise<Success> _commit_1 = session.commit();
     _commit_1.get();
     ListQuery _selectAll = node1.selectAll();
