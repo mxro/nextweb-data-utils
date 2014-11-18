@@ -13,7 +13,6 @@ import static extension de.mxro.async.Async.embed
 class TestRemoveRecursiveSafe {
 	
 	def test() {
-		
 		val server = AppjangleJre.startServer
 		val session = AppjangleJre.createSession(server)
 		
