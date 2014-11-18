@@ -180,7 +180,7 @@ public class NextwebDataExtension {
     return _xblockexpression;
   }
   
-  public boolean isDirectParent(final Link node, final Link parent) {
+  public boolean hasDirectChild(final Link parent, final Link node) {
     String _parentUri = this.getParentUri(node);
     String _uri = parent.uri();
     return _parentUri.equals(_uri);

@@ -125,7 +125,7 @@ class NextwebDataExtension {
 		substring(0, lastIndexOf("/")-1)
 	}
 
-	def isDirectParent(Link node, Link parent) {
+	def hasDirectChild(Link parent, Link node) {
 		
 		node.parentUri.equals(parent.uri())
 		
