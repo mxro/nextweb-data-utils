@@ -11,14 +11,15 @@ class TestThatDirectParentsCanBeDetermined {
 
 		val session = Nextweb.createSession()
 
-		val node = session.link("http://slicnet.com/mxrogm/mxrogm/data/stream/2014/3/12/n4/Unnamed2")
+		val directChild = session.link("http://slicnet.com/mxrogm/mxrogm/data/stream/2014/3/12/n4/Unnamed2")
 
 		val parent = session.link("http://slicnet.com/mxrogm/mxrogm/data/stream/2014/3/12/n4")
 		
-		println(node.parentUri)
+		parent.hasDirectChild(directChild) => true
+		
+		directChild.hasDirectChild(parent) => false
 		
 		
-		parent.hasDirectChild(node) => true
 	}
 
 	extension NextwebDataExtension dx = new NextwebDataExtension

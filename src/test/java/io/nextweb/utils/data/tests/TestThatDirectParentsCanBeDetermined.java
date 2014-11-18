@@ -6,7 +6,6 @@ import io.nextweb.Session;
 import io.nextweb.jre.Nextweb;
 import io.nextweb.utils.data.NextwebDataExtension;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure0;
 import org.hamcrest.Matcher;
 import org.junit.Assert;
@@ -19,12 +18,12 @@ public class TestThatDirectParentsCanBeDetermined {
   @Test
   public void test() {
     final Session session = Nextweb.createSession();
-    final Link node = session.link("http://slicnet.com/mxrogm/mxrogm/data/stream/2014/3/12/n4/Unnamed2");
+    final Link directChild = session.link("http://slicnet.com/mxrogm/mxrogm/data/stream/2014/3/12/n4/Unnamed2");
     final Link parent = session.link("http://slicnet.com/mxrogm/mxrogm/data/stream/2014/3/12/n4");
-    String _parentUri = this.dx.getParentUri(node);
-    InputOutput.<String>println(_parentUri);
-    boolean _hasDirectChild = this.dx.hasDirectChild(parent, node);
+    boolean _hasDirectChild = this.dx.hasDirectChild(parent, directChild);
     TestThatDirectParentsCanBeDetermined.<Boolean, Boolean>operator_doubleArrow(Boolean.valueOf(_hasDirectChild), Boolean.valueOf(true));
+    boolean _hasDirectChild_1 = this.dx.hasDirectChild(directChild, parent);
+    TestThatDirectParentsCanBeDetermined.<Boolean, Boolean>operator_doubleArrow(Boolean.valueOf(_hasDirectChild_1), Boolean.valueOf(false));
   }
   
   @Extension
