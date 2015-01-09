@@ -2,9 +2,9 @@ package io.nextweb.utils.data.tests;
 
 import com.appjangle.jre.AppjangleJre;
 import de.mxro.async.Async;
-import de.mxro.async.Deferred;
 import de.mxro.async.callbacks.ValueCallback;
 import de.mxro.async.jre.AsyncJre;
+import de.mxro.async.promise.Deferred;
 import de.mxro.fn.Closure;
 import de.mxro.fn.Success;
 import de.mxro.tree.Tree;
