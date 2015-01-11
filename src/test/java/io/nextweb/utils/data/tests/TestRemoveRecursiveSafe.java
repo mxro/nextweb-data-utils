@@ -4,7 +4,7 @@ import com.appjangle.jre.AppjangleJre;
 import de.mxro.async.AsyncCommon;
 import de.mxro.async.Operation;
 import de.mxro.async.callbacks.ValueCallback;
-import de.mxro.async.jre.AsyncJre;
+import de.mxro.async.jre.Async;
 import de.mxro.fn.Closure;
 import de.mxro.fn.Success;
 import de.oehme.xtend.junit.JUnit;
@@ -68,7 +68,7 @@ public class TestRemoveRecursiveSafe {
         TestRemoveRecursiveSafe.this.ext.removeSafeRecursive(root, node1, _embed);
       }
     };
-    AsyncJre.<Object>waitFor(_function);
+    Async.<Object>waitFor(_function);
     NextwebPromise<Success> _commit_1 = session.commit();
     _commit_1.get();
     ListQuery _selectAll_1 = root.selectAll();

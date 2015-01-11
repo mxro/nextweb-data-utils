@@ -4,7 +4,7 @@ import com.appjangle.jre.AppjangleJre;
 import de.mxro.async.AsyncCommon;
 import de.mxro.async.Operation;
 import de.mxro.async.callbacks.ValueCallback;
-import de.mxro.async.jre.AsyncJre;
+import de.mxro.async.jre.Async;
 import de.mxro.fn.Closure;
 import de.mxro.fn.Success;
 import de.mxro.tree.Tree;
@@ -54,13 +54,13 @@ public class TestRemoveRecursive {
         TestRemoveRecursive.this.ext.collectDirectChildren(root, _embed);
       }
     };
-    AsyncJre.<Object>waitFor(_function);
+    Async.<Object>waitFor(_function);
     final Operation<Success> _function_1 = new Operation<Success>() {
       public void apply(final ValueCallback<Success> cb) {
         TestRemoveRecursive.this.ext.removeRecursive(root, node1, cb);
       }
     };
-    AsyncJre.<Success>waitFor(_function_1);
+    Async.<Success>waitFor(_function_1);
     NextwebPromise<Success> _commit_1 = session.commit();
     _commit_1.get();
     ListQuery _selectAll = node1.selectAll();

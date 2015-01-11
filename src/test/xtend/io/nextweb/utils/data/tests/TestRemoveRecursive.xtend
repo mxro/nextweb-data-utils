@@ -7,9 +7,9 @@ import de.oehme.xtend.junit.JUnit
 import io.nextweb.Link
 import io.nextweb.utils.data.NextwebDataExtension
 
-import static de.mxro.async.jre.AsyncJre.*
 
 import static extension de.mxro.async.AsyncCommon.embed
+import static de.mxro.async.jre.Async.*
 
 @JUnit
 class TestRemoveRecursive {
