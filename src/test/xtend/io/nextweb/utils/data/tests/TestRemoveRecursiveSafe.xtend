@@ -32,6 +32,7 @@ class TestRemoveRecursiveSafe {
 
 		root.selectAll.get.values.contains("node1") => true
 
+
 		waitFor [cb |
 			root.removeSafeRecursive( node1, cb.embed [qries |
 				(qries.size > 0) => true

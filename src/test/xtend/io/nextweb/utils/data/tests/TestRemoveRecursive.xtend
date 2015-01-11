@@ -40,6 +40,7 @@ class TestRemoveRecursive {
 			
 		]
 		
+		
 		waitFor [cb |
 			root.removeRecursive( node1, cb)
 		]
