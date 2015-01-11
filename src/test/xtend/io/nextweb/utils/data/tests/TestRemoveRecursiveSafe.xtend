@@ -7,7 +7,7 @@ import io.nextweb.utils.data.NextwebDataExtension
 
 import static de.mxro.async.jre.AsyncJre.*
 
-import static extension de.mxro.async.Async.embed
+import static extension de.mxro.async.AsyncCommon.embed
 
 @JUnit
 class TestRemoveRecursiveSafe {

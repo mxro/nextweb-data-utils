@@ -1,7 +1,7 @@
 package io.nextweb.utils.data.tests;
 
 import com.appjangle.jre.AppjangleJre;
-import de.mxro.async.Async;
+import de.mxro.async.AsyncCommon;
 import de.mxro.async.Operation;
 import de.mxro.async.callbacks.ValueCallback;
 import de.mxro.async.jre.AsyncJre;
@@ -64,7 +64,7 @@ public class TestRemoveRecursiveSafe {
             cb.onSuccess(Success.INSTANCE);
           }
         };
-        ValueCallback<List<NextwebPromise<Success>>> _embed = Async.<List<NextwebPromise<Success>>>embed(cb, _function);
+        ValueCallback<List<NextwebPromise<Success>>> _embed = AsyncCommon.<List<NextwebPromise<Success>>>embed(cb, _function);
         TestRemoveRecursiveSafe.this.ext.removeSafeRecursive(root, node1, _embed);
       }
     };

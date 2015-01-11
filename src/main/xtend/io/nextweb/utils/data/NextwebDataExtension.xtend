@@ -1,6 +1,5 @@
 package io.nextweb.utils.data
 
-import de.mxro.async.Async
 import de.mxro.async.callbacks.ValueCallback
 import de.mxro.fn.Success
 import de.mxro.tree.Tree
@@ -12,7 +11,8 @@ import io.nextweb.Query
 import io.nextweb.promise.NextwebPromise
 import java.util.List
 
-import static extension de.mxro.async.Async.embed
+import de.mxro.async.AsyncCommon
+import static extension de.mxro.async.AsyncCommon.embed
 
 class NextwebDataExtension {
 
@@ -104,7 +104,7 @@ class NextwebDataExtension {
 		qry.catchExceptions[er|cb.onFailure(er.exception)]
 
 		qry.get [ children |
-			Async.forEach(children.nodes(),
+			AsyncCommon.forEach(children.nodes(),
 				[ e, ValueCallback<Tree<Link>> itmcb |
 					collectDirectChildrenInt(root, session.link(e), itmcb)
 				],

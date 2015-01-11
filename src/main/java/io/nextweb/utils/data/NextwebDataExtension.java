@@ -1,6 +1,6 @@
 package io.nextweb.utils.data;
 
-import de.mxro.async.Async;
+import de.mxro.async.AsyncCommon;
 import de.mxro.async.callbacks.ValueCallback;
 import de.mxro.fn.Closure;
 import de.mxro.fn.Closure2;
@@ -48,7 +48,7 @@ public class NextwebDataExtension {
         cb.onSuccess(Success.INSTANCE);
       }
     };
-    ValueCallback<Tree<Link>> _embed = Async.<Tree<Link>>embed(cb, _function);
+    ValueCallback<Tree<Link>> _embed = AsyncCommon.<Tree<Link>>embed(cb, _function);
     this.collectDirectChildren(entity, _embed);
   }
   
@@ -76,7 +76,7 @@ public class NextwebDataExtension {
         cb.onSuccess(res);
       }
     };
-    ValueCallback<Tree<Link>> _embed = Async.<Tree<Link>>embed(cb, _function);
+    ValueCallback<Tree<Link>> _embed = AsyncCommon.<Tree<Link>>embed(cb, _function);
     this.collectDirectChildren(entity, _embed);
   }
   
@@ -162,8 +162,8 @@ public class NextwebDataExtension {
             cb.onSuccess(t);
           }
         };
-        ValueCallback<List<Tree<Link>>> _embed = Async.<List<Tree<Link>>>embed(cb, _function_1);
-        Async.<Node, Tree<Link>>forEach(_nodes, _function, _embed);
+        ValueCallback<List<Tree<Link>>> _embed = AsyncCommon.<List<Tree<Link>>>embed(cb, _function_1);
+        AsyncCommon.<Node, Tree<Link>>forEach(_nodes, _function, _embed);
       }
     };
     qry.get(_function_1);

@@ -1,7 +1,7 @@
 package io.nextweb.utils.data.tests;
 
 import com.appjangle.jre.AppjangleJre;
-import de.mxro.async.Async;
+import de.mxro.async.AsyncCommon;
 import de.mxro.async.Operation;
 import de.mxro.async.callbacks.ValueCallback;
 import de.mxro.async.jre.AsyncJre;
@@ -50,7 +50,7 @@ public class TestRemoveRecursive {
             cb.onSuccess(Success.INSTANCE);
           }
         };
-        ValueCallback<Tree<Link>> _embed = Async.<Tree<Link>>embed(cb, _function);
+        ValueCallback<Tree<Link>> _embed = AsyncCommon.<Tree<Link>>embed(cb, _function);
         TestRemoveRecursive.this.ext.collectDirectChildren(root, _embed);
       }
     };
