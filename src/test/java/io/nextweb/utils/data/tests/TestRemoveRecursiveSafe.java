@@ -48,7 +48,7 @@ public class TestRemoveRecursiveSafe {
     boolean _contains = _values.contains("node1");
     TestRemoveRecursiveSafe.<Boolean, Boolean>operator_doubleArrow(Boolean.valueOf(_contains), Boolean.valueOf(true));
     final Deferred<Object> _function = new Deferred<Object>() {
-      public void get(final ValueCallback<Object> cb) {
+      public void apply(final ValueCallback<Object> cb) {
         final Closure<List<NextwebPromise<Success>>> _function = new Closure<List<NextwebPromise<Success>>>() {
           public void apply(final List<NextwebPromise<Success>> qries) {
             int _size = qries.size();

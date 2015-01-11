@@ -44,7 +44,7 @@ public class TestRemoveRecursive {
     NextwebPromise<Success> _commit = session.commit();
     _commit.get();
     final Deferred<Object> _function = new Deferred<Object>() {
-      public void get(final ValueCallback<Object> cb) {
+      public void apply(final ValueCallback<Object> cb) {
         final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
           public void apply(final Tree<Link> tree) {
             cb.onSuccess(Success.INSTANCE);
@@ -56,7 +56,7 @@ public class TestRemoveRecursive {
     };
     AsyncJre.<Object>waitFor(_function);
     final Deferred<Success> _function_1 = new Deferred<Success>() {
-      public void get(final ValueCallback<Success> cb) {
+      public void apply(final ValueCallback<Success> cb) {
         TestRemoveRecursive.this.ext.removeRecursive(root, node1, cb);
       }
     };
