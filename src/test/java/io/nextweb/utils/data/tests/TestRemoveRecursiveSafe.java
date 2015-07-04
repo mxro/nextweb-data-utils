@@ -48,14 +48,17 @@ public class TestRemoveRecursiveSafe {
     boolean _contains = _values.contains("node1");
     TestRemoveRecursiveSafe.<Boolean, Boolean>operator_doubleArrow(Boolean.valueOf(_contains), Boolean.valueOf(true));
     final Operation<Object> _function = new Operation<Object>() {
+      @Override
       public void apply(final ValueCallback<Object> cb) {
         final Closure<List<NextwebPromise<Success>>> _function = new Closure<List<NextwebPromise<Success>>>() {
+          @Override
           public void apply(final List<NextwebPromise<Success>> qries) {
             int _size = qries.size();
             boolean _greaterThan = (_size > 0);
             TestRemoveRecursiveSafe.<Boolean, Boolean>operator_doubleArrow(Boolean.valueOf(_greaterThan), Boolean.valueOf(true));
             for (final NextwebPromise<Success> qry : qries) {
               final Closure<Success> _function = new Closure<Success>() {
+                @Override
                 public void apply(final Success it) {
                 }
               };

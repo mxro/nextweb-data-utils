@@ -44,8 +44,10 @@ public class TestRemoveRecursive {
     NextwebPromise<Success> _commit = session.commit();
     _commit.get();
     final Operation<Object> _function = new Operation<Object>() {
+      @Override
       public void apply(final ValueCallback<Object> cb) {
         final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
+          @Override
           public void apply(final Tree<Link> tree) {
             cb.onSuccess(Success.INSTANCE);
           }
@@ -56,6 +58,7 @@ public class TestRemoveRecursive {
     };
     Async.<Object>waitFor(_function);
     final Operation<Success> _function_1 = new Operation<Success>() {
+      @Override
       public void apply(final ValueCallback<Success> cb) {
         TestRemoveRecursive.this.ext.removeRecursive(root, node1, cb);
       }

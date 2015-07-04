@@ -31,6 +31,7 @@ public class NextwebDataExtension {
    */
   public void removeRecursive(final Entity from, final Entity entity, final ValueCallback<Success> cb) {
     final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
+      @Override
       public void apply(final Tree<Link> tree) {
         List<Tree<Link>> _list = NextwebDataExtension.this.tree.<Link>toList(tree);
         for (final Tree<Link> childNode : _list) {
@@ -54,6 +55,7 @@ public class NextwebDataExtension {
   
   public void removeSafeRecursive(final Entity from, final Entity entity, final ValueCallback<List<NextwebPromise<Success>>> cb) {
     final Closure<Tree<Link>> _function = new Closure<Tree<Link>>() {
+      @Override
       public void apply(final Tree<Link> tree) {
         final ArrayList<NextwebPromise<Success>> res = CollectionLiterals.<NextwebPromise<Success>>newArrayList();
         List<Tree<Link>> _list = NextwebDataExtension.this.tree.<Link>toList(tree);
@@ -98,6 +100,7 @@ public class NextwebDataExtension {
     if ((of instanceof Query)) {
       final Query query = ((Query)of);
       final ExceptionListener _function = new ExceptionListener() {
+        @Override
         public void onFailure(final ExceptionResult er) {
           Throwable _exception = er.exception();
           cb.onFailure(_exception);
@@ -105,6 +108,7 @@ public class NextwebDataExtension {
       };
       query.catchExceptions(_function);
       final Closure<Node> _function_1 = new Closure<Node>() {
+        @Override
         public void apply(final Node node) {
           Session _session = node.session();
           Link _link = _session.link(node);
@@ -139,6 +143,7 @@ public class NextwebDataExtension {
     }
     final ListQuery qry = node.selectAll();
     final ExceptionListener _function = new ExceptionListener() {
+      @Override
       public void onFailure(final ExceptionResult er) {
         Throwable _exception = er.exception();
         cb.onFailure(_exception);
@@ -146,15 +151,18 @@ public class NextwebDataExtension {
     };
     qry.catchExceptions(_function);
     final Closure<NodeList> _function_1 = new Closure<NodeList>() {
+      @Override
       public void apply(final NodeList children) {
         List<Node> _nodes = children.nodes();
         final Closure2<Node, ValueCallback<Tree<Link>>> _function = new Closure2<Node, ValueCallback<Tree<Link>>>() {
+          @Override
           public void apply(final Node e, final ValueCallback<Tree<Link>> itmcb) {
             Link _link = session.link(e);
             NextwebDataExtension.this.collectDirectChildrenInt(root, _link, itmcb);
           }
         };
         final Closure<List<Tree<Link>>> _function_1 = new Closure<List<Tree<Link>>>() {
+          @Override
           public void apply(final List<Tree<Link>> res) {
             for (final Tree<Link> childTree : res) {
               t.add(childTree);
