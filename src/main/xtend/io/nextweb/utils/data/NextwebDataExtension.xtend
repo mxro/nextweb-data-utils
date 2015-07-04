@@ -1,18 +1,17 @@
 package io.nextweb.utils.data
 
-import de.mxro.async.callbacks.ValueCallback
 import de.mxro.fn.Success
 import de.mxro.tree.Tree
 import de.mxro.tree.TreeExtension
+import delight.async.AsyncCommon
+import delight.async.callbacks.ValueCallback
+import static extension delight.async.AsyncCommon.*
 import io.nextweb.Entity
 import io.nextweb.Link
 import io.nextweb.Node
 import io.nextweb.Query
 import io.nextweb.promise.NextwebPromise
 import java.util.List
-
-import de.mxro.async.AsyncCommon
-import static extension de.mxro.async.AsyncCommon.embed
 
 class NextwebDataExtension {
 

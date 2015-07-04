@@ -4,12 +4,10 @@ import com.appjangle.jre.AppjangleJre
 import de.mxro.fn.Success
 import de.mxro.tree.Tree
 import de.oehme.xtend.junit.JUnit
+import delight.async.jre.Async
 import io.nextweb.Link
 import io.nextweb.utils.data.NextwebDataExtension
-
-
-import static extension de.mxro.async.AsyncCommon.embed
-import static de.mxro.async.jre.Async.*
+import static extension delight.async.AsyncCommon.*
 
 @JUnit
 class TestRemoveRecursive {
@@ -31,7 +29,7 @@ class TestRemoveRecursive {
 		
 		session.commit.get
 		
-		waitFor [cb |
+		Async.waitFor [cb |
 			
 			root.collectDirectChildren(cb.embed [Tree<Link> tree |
 				
@@ -41,7 +39,7 @@ class TestRemoveRecursive {
 		]
 		
 		
-		waitFor [cb |
+		Async.waitFor [cb |
 			root.removeRecursive( node1, cb)
 		]
 		session.commit.get

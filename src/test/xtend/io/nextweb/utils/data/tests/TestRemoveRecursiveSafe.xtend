@@ -3,11 +3,9 @@ package io.nextweb.utils.data.tests
 import com.appjangle.jre.AppjangleJre
 import de.mxro.fn.Success
 import de.oehme.xtend.junit.JUnit
+import delight.async.jre.Async
 import io.nextweb.utils.data.NextwebDataExtension
-
-
-import static extension de.mxro.async.AsyncCommon.embed
-import static de.mxro.async.jre.Async.*
+import static extension delight.async.AsyncCommon.*
 
 @JUnit
 class TestRemoveRecursiveSafe {
@@ -33,7 +31,7 @@ class TestRemoveRecursiveSafe {
 		root.selectAll.get.values.contains("node1") => true
 
 
-		waitFor [cb |
+		Async.waitFor [cb |
 			root.removeSafeRecursive( node1, cb.embed [qries |
 				(qries.size > 0) => true
 				
