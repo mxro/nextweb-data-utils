@@ -1,13 +1,12 @@
 package io.nextweb.utils.data;
 
+import org.eclipse.xtext.xbase.lib.Extension;
+
 import de.mxro.tree.Tree;
 import de.mxro.tree.TreeExtension;
 import delight.async.callbacks.ValueCallback;
 import io.nextweb.Entity;
 import io.nextweb.Link;
-import io.nextweb.promise.NextwebPromise;
-import java.util.List;
-import org.eclipse.xtext.xbase.lib.Extension;
 
 @SuppressWarnings("all")
 public class NextwebDataExtension {
