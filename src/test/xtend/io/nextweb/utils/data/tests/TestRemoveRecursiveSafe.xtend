@@ -1,10 +1,11 @@
 package io.nextweb.utils.data.tests
 
 import com.appjangle.jre.AppjangleJre
-import de.mxro.fn.Success
 import de.oehme.xtend.junit.JUnit
 import delight.async.jre.Async
+import delight.functional.Success
 import io.nextweb.utils.data.NextwebDataExtension
+
 import static extension delight.async.AsyncCommon.*
 
 @JUnit
