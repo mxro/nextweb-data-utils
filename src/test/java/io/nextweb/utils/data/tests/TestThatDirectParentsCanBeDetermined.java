@@ -1,8 +1,8 @@
 package io.nextweb.utils.data.tests;
 
 import de.oehme.xtend.junit.JUnit;
-import io.nextweb.Link;
 import io.nextweb.Client;
+import io.nextweb.Link;
 import io.nextweb.jre.Nextweb;
 import io.nextweb.utils.data.NextwebDataExtension;
 import org.eclipse.xtext.xbase.lib.Extension;
