@@ -1,7 +1,7 @@
 package io.nextweb.utils.data.tests
 
+import com.appjangle.api.jre.Nextweb
 import de.oehme.xtend.junit.JUnit
-import io.nextweb.jre.Nextweb
 import io.nextweb.utils.data.NextwebDataExtension
 
 @JUnit
