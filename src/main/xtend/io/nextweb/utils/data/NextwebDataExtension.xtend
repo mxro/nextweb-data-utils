@@ -16,6 +16,7 @@ import static extension delight.async.AsyncCommon.*
 
 class NextwebDataExtension {
 
+
 	/**
 	 * <p>Removes the specified node from the defined <code>from</code> node and all its <b>direct</b> children.
 	 * 
