@@ -13,7 +13,7 @@ import io.nextweb.ListQuery;
 import io.nextweb.Node;
 import io.nextweb.NodeList;
 import io.nextweb.Query;
-import io.nextweb.Session;
+import io.nextweb.Client;
 import io.nextweb.promise.NextwebPromise;
 import io.nextweb.promise.exceptions.ExceptionListener;
 import io.nextweb.promise.exceptions.ExceptionResult;
@@ -92,7 +92,7 @@ public class NextwebDataExtension {
       return;
     }
     if ((of instanceof Node)) {
-      Session _session = ((Node)of).session();
+      Client _session = ((Node)of).session();
       final Link link_1 = _session.link(((Node) of));
       this.collectDirectChildren(link_1, cb);
       return;
@@ -110,7 +110,7 @@ public class NextwebDataExtension {
       final Closure<Node> _function_1 = new Closure<Node>() {
         @Override
         public void apply(final Node node) {
-          Session _session = node.session();
+          Client _session = node.session();
           Link _link = _session.link(node);
           NextwebDataExtension.this.collectDirectChildren(_link, cb);
         }
@@ -130,7 +130,7 @@ public class NextwebDataExtension {
    * Determines all <b>direct</b> children of a node.
    */
   public void collectDirectChildrenInt(final Link root, final Link node, final ValueCallback<Tree<Link>> cb) {
-    final Session session = node.session();
+    final Client session = node.session();
     Link _link = session.link(node);
     final Tree<Link> t = new Tree<Link>(_link);
     String _uri = node.uri();

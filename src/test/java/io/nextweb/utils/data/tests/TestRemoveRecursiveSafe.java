@@ -11,7 +11,7 @@ import delight.functional.Success;
 import io.nextweb.ListQuery;
 import io.nextweb.NodeList;
 import io.nextweb.Query;
-import io.nextweb.Session;
+import io.nextweb.Client;
 import io.nextweb.common.LocalServer;
 import io.nextweb.promise.NextwebPromise;
 import io.nextweb.utils.data.NextwebDataExtension;
@@ -29,7 +29,7 @@ public class TestRemoveRecursiveSafe {
   @Test
   public void test() {
     final LocalServer server = AppjangleJre.startServer();
-    final Session session = AppjangleJre.createSession(server);
+    final Client session = AppjangleJre.createSession(server);
     final Query root = session.seed(server);
     final Query node1 = root.append("node1", "./node1");
     Query _append = node1.append("a child");

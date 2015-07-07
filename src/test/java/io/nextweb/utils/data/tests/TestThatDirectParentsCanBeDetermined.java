@@ -2,7 +2,7 @@ package io.nextweb.utils.data.tests;
 
 import de.oehme.xtend.junit.JUnit;
 import io.nextweb.Link;
-import io.nextweb.Session;
+import io.nextweb.Client;
 import io.nextweb.jre.Nextweb;
 import io.nextweb.utils.data.NextwebDataExtension;
 import org.eclipse.xtext.xbase.lib.Extension;
@@ -17,7 +17,7 @@ import org.junit.internal.ArrayComparisonFailure;
 public class TestThatDirectParentsCanBeDetermined {
   @Test
   public void test() {
-    final Session session = Nextweb.createSession();
+    final Client session = Nextweb.createSession();
     final Link directChild = session.link("http://slicnet.com/mxrogm/mxrogm/data/stream/2014/3/12/n4/Unnamed2");
     final Link indirectChild = session.link("http://slicnet.com/mxrogm/mxrogm/data/stream/2014/3/12/n4/Unnamed15/Unnamed2");
     final Link parent = session.link("http://slicnet.com/mxrogm/mxrogm/data/stream/2014/3/12/n4");
