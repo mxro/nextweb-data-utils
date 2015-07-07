@@ -1,14 +1,14 @@
 package io.nextweb.utils.data
 
+import com.appjangle.api.Entity
+import com.appjangle.api.Link
+import com.appjangle.api.Node
+import com.appjangle.api.Query
 import de.mxro.tree.Tree
 import de.mxro.tree.TreeExtension
 import delight.async.AsyncCommon
 import delight.async.callbacks.ValueCallback
 import delight.functional.Success
-import io.nextweb.Entity
-import io.nextweb.Link
-import io.nextweb.Node
-import io.nextweb.Query
 import io.nextweb.promise.NextwebPromise
 import java.util.List
 

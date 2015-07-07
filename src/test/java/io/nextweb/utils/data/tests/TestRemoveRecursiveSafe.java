@@ -13,7 +13,6 @@ import delight.async.callbacks.ValueCallback;
 import delight.async.jre.Async;
 import delight.functional.Closure;
 import delight.functional.Success;
-
 import io.nextweb.promise.NextwebPromise;
 import io.nextweb.utils.data.NextwebDataExtension;
 import java.util.List;

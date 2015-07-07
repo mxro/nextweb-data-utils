@@ -1,21 +1,5 @@
 package io.nextweb.utils.data;
 
-import de.mxro.tree.Tree;
-import de.mxro.tree.TreeExtension;
-import delight.async.AsyncCommon;
-import delight.async.callbacks.ValueCallback;
-import delight.functional.Closure;
-import delight.functional.Closure2;
-import delight.functional.Success;
-
-import io.nextweb.promise.NextwebPromise;
-import io.nextweb.promise.exceptions.ExceptionListener;
-import io.nextweb.promise.exceptions.ExceptionResult;
-import java.util.ArrayList;
-import java.util.List;
-import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.Extension;
-
 import com.appjangle.api.Client;
 import com.appjangle.api.Entity;
 import com.appjangle.api.Link;
@@ -23,6 +7,20 @@ import com.appjangle.api.ListQuery;
 import com.appjangle.api.Node;
 import com.appjangle.api.NodeList;
 import com.appjangle.api.Query;
+import de.mxro.tree.Tree;
+import de.mxro.tree.TreeExtension;
+import delight.async.AsyncCommon;
+import delight.async.callbacks.ValueCallback;
+import delight.functional.Closure;
+import delight.functional.Closure2;
+import delight.functional.Success;
+import io.nextweb.promise.NextwebPromise;
+import io.nextweb.promise.exceptions.ExceptionListener;
+import io.nextweb.promise.exceptions.ExceptionResult;
+import java.util.ArrayList;
+import java.util.List;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Extension;
 
 @SuppressWarnings("all")
 public class NextwebDataExtension {
