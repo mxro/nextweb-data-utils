@@ -17,7 +17,7 @@ import static extension delight.async.AsyncCommon.*
 class NextwebDataExtension {
 
 	/**
-	 * <p>Removes the specified node from the defined <code>form</code> node and all its <b>direct</b> children.
+	 * <p>Removes the specified node from the defined <code>from</code> node and all its <b>direct</b> children.
 	 * 
 	 * <p>Callback is called when all operations are defined, NOT executed.
 	 */
