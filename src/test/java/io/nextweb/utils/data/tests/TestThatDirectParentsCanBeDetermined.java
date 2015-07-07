@@ -17,7 +17,7 @@ import org.junit.internal.ArrayComparisonFailure;
 public class TestThatDirectParentsCanBeDetermined {
   @Test
   public void test() {
-    final Client session = AppjangleApi.createSession();
+    final Client session = AppjangleApi.createClient();
     final Link directChild = session.link("http://slicnet.com/mxrogm/mxrogm/data/stream/2014/3/12/n4/Unnamed2");
     final Link indirectChild = session.link("http://slicnet.com/mxrogm/mxrogm/data/stream/2014/3/12/n4/Unnamed15/Unnamed2");
     final Link parent = session.link("http://slicnet.com/mxrogm/mxrogm/data/stream/2014/3/12/n4");

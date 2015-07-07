@@ -9,7 +9,7 @@ class TestThatDirectParentsCanBeDetermined {
 
 	def test() {
 
-		val session = AppjangleApi.createSession()
+		val session = AppjangleApi.createClient()
 
 		val directChild = session.link("http://slicnet.com/mxrogm/mxrogm/data/stream/2014/3/12/n4/Unnamed2")
 
