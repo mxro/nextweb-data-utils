@@ -7,13 +7,7 @@ import delight.async.callbacks.ValueCallback;
 import delight.functional.Closure;
 import delight.functional.Closure2;
 import delight.functional.Success;
-import io.nextweb.Client;
-import io.nextweb.Entity;
-import io.nextweb.Link;
-import io.nextweb.ListQuery;
-import io.nextweb.Node;
-import io.nextweb.NodeList;
-import io.nextweb.Query;
+
 import io.nextweb.promise.NextwebPromise;
 import io.nextweb.promise.exceptions.ExceptionListener;
 import io.nextweb.promise.exceptions.ExceptionResult;
@@ -21,6 +15,14 @@ import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Extension;
+
+import com.appjangle.api.Client;
+import com.appjangle.api.Entity;
+import com.appjangle.api.Link;
+import com.appjangle.api.ListQuery;
+import com.appjangle.api.Node;
+import com.appjangle.api.NodeList;
+import com.appjangle.api.Query;
 
 @SuppressWarnings("all")
 public class NextwebDataExtension {

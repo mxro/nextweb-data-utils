@@ -1,5 +1,11 @@
 package io.nextweb.utils.data.tests;
 
+import com.appjangle.api.Client;
+import com.appjangle.api.Link;
+import com.appjangle.api.ListQuery;
+import com.appjangle.api.NodeList;
+import com.appjangle.api.Query;
+import com.appjangle.api.common.LocalServer;
 import com.appjangle.jre.AppjangleJre;
 import de.mxro.tree.Tree;
 import de.oehme.xtend.junit.JUnit;
@@ -9,12 +15,7 @@ import delight.async.callbacks.ValueCallback;
 import delight.async.jre.Async;
 import delight.functional.Closure;
 import delight.functional.Success;
-import io.nextweb.Client;
-import io.nextweb.Link;
-import io.nextweb.ListQuery;
-import io.nextweb.NodeList;
-import io.nextweb.Query;
-import io.nextweb.common.LocalServer;
+
 import io.nextweb.promise.NextwebPromise;
 import io.nextweb.utils.data.NextwebDataExtension;
 import org.eclipse.xtext.xbase.lib.Extension;

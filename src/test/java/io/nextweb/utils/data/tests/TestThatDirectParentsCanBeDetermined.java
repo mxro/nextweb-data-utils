@@ -1,9 +1,6 @@
 package io.nextweb.utils.data.tests;
 
 import de.oehme.xtend.junit.JUnit;
-import io.nextweb.Client;
-import io.nextweb.Link;
-import io.nextweb.jre.Nextweb;
 import io.nextweb.utils.data.NextwebDataExtension;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure0;
@@ -11,6 +8,10 @@ import org.hamcrest.Matcher;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.internal.ArrayComparisonFailure;
+
+import com.appjangle.api.Client;
+import com.appjangle.api.Link;
+import com.appjangle.api.jre.Nextweb;
 
 @JUnit
 @SuppressWarnings("all")
